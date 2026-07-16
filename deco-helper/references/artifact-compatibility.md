@@ -33,7 +33,7 @@ If names differ but identity is clear, normalize only the model-facing display l
 - The director-design product contains enough timing, action, dialogue, camera, lighting, and audio detail for execution.
 - The director sentence order and execution content can be preserved while minimal visible-name asset citations are inserted at the states they control; the trailing `避免：` clauses can be extracted once and moved into `Constraints` without content loss.
 
-When director-design content is insufficient or internally contradictory, request a revised `deco-director-designer` product. Do not repair it during integration.
+When director-design content is insufficient or internally contradictory, request a revised `deco-action-designer` product. Do not repair it during integration.
 
 ## Outer reference binding rule
 
@@ -43,7 +43,7 @@ Never add, replace, or rewrite a `Reference:` line inside the director-design bo
 
 ## Director-body preservation
 
-Route A pastes the complete Director Designer body unchanged. Route B preserves the Director sentence order and execution content; the only permitted edits are inserting the minimal quoted-identity citation into the exact `Continuity`, execution, or Shot sentence each asset controls, and extracting the single trailing `避免：` line once into `Constraints` as `禁止出现：`. Never summarize, repair, retime, split, or duplicate director execution or audio design.
+Route A pastes the complete `deco-action-designer` body unchanged. Route B preserves its sentence order and execution content; the only permitted edits are inserting the minimal quoted-identity citation into the exact `Continuity`, execution, or Shot sentence each asset controls, and extracting the single trailing `避免：` line once into `Constraints` as `禁止出现：`. Never summarize, repair, retime, split, or duplicate director execution or audio design.
 
 ## One asset, one name
 
