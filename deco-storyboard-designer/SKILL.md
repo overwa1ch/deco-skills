@@ -1,6 +1,6 @@
 ---
 name: deco-storyboard-designer
-description: Invoke only when the user explicitly mentions deco (the deco pipeline or this skill by name); never trigger on generic storyboard/分镜 keywords alone. Convert completed scripts, locked story material, scenes, or existing shot material into SEG breakdowns, optional scene-layout SVGs, visually optimized material, processed director scripts, storyboard designs, the fixed storyboard prompt, and the fixed shot-table prompt. Use for 拆SEG, 导演脚本, 镜头脚本, 场景布局, 分镜设计, 故事板, 分镜表, Bxx, 景别, 构图, 运镜, 镜头连续性, returned-board review, or the existing copy-ready storyboard prompts. Keep original screenwriting, static asset design, performance/dialogue/audio design, and final video prompt assembly outside this skill.
+description: Convert completed scripts, locked story material, scenes, or existing shot material into SEG breakdowns, optional scene-layout SVGs, visually optimized material, processed director scripts, storyboard designs, the fixed storyboard prompt, and the fixed shot-table prompt. Use for 拆SEG, 导演脚本, 镜头脚本, 场景布局, 分镜设计, 故事板, 分镜表, Bxx, 景别, 构图, 运镜, 镜头连续性, returned-board review, or the existing copy-ready storyboard prompts. Trigger from the professional storyboard or shot-design intent; explicit deco mention is not required. Keep original screenwriting, static asset design, performance/dialogue/audio design, and final video prompt assembly outside this skill.
 ---
 
 # Deco Storyboard Designer
@@ -9,7 +9,7 @@ Own the production bridge from completed story material to storyboard-ready dire
 
 Boards are test instruments first, deliverables second: a storyboard or shot table exists to prove or falsify the shot design cheaply before video generation. A finished board is the byproduct of a passed test.
 
-Current version: `deco-storyboard-designer@2026-07-16-v1.13-skill-name-cutover` (functions are an on-demand menu — deliver exactly the named product, no sequence pressure; boards are shot-design tests first; text-based review; rough/formal grades retired).
+Current version: `deco-storyboard-designer@2026-07-16-v1.14-professional-intent-trigger` (professional storyboard or shot-design intent triggers directly; explicit deco mention is not required; functions remain an on-demand menu).
 
 ## Accept the user's current material
 

@@ -1,11 +1,11 @@
 ---
 name: deco-visual-style-extractor
-description: "Invoke only when the user explicitly mentions deco (the deco pipeline or this skill by name); never trigger on generic style-analysis keywords alone. Identify established visual styles and extract reusable style systems from reference images, moodboards, generated outputs, videos, brand materials, or craft notes. Use when the task needs to name or classify a visual style, research existing art/design/film/internet-aesthetic terms, avoid inventing unsupported style names, analyze references, create style rules, build prompt/JSON templates, define keep/avoid constraints, compare samples, or turn an aesthetic direction into a repeatable image/video generation workflow."
+description: "Identify established visual styles and extract reusable style systems from reference images, moodboards, generated outputs, videos, brand materials, or craft notes. Use when the task needs to name or classify a visual style, research existing art/design/film/internet-aesthetic terms, avoid inventing unsupported style names, analyze references, create style rules, build prompt/JSON templates, define keep/avoid constraints, compare samples, or turn an aesthetic direction into a repeatable image/video generation workflow. Trigger from the professional visual-style analysis or extraction intent; explicit deco mention is not required."
 ---
 
 # Deco Visual Style Extractor
 
-Current version: `deco-visual-style-extractor@2026-07-15-v1.2-deco-only-trigger` (description gated to explicit deco mention). | v1.1 existing-style-lookup-first.
+Current version: `deco-visual-style-extractor@2026-07-16-v1.3-professional-intent-trigger` (professional visual-style analysis or extraction intent triggers directly; explicit deco mention is not required). | v1.2 deco-only-trigger superseded. | v1.1 existing-style-lookup-first.
 
 ## Core Principle
 

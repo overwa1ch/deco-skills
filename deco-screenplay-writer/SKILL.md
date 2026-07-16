@@ -5,16 +5,14 @@ description: >
   覆盖从1-3分钟概念超短片到90分钟电影长片、多集剧集的全格式剧本创作。
   支持四种格式：概念超短片（how-to-tell/what-if）、5-10分钟叙事短片、90分钟长片（商业/文艺）、多集剧集。
   覆盖从人物设计、结构大纲、场景拆解、到完整剧本写作的全流程。
-  仅在用户明确提到 deco（deco 管线、本 skill 名称，或明说"用 deco"）时调用；
-  写剧本、想故事、剧本医生等一般性请求不触发本技能。
-  触发后覆盖：故事点子、大纲、人物设计、节拍表、场景拆解、完整剧本、剧本医生。
+  用于写剧本、想故事、故事点子、大纲、人物设计、节拍表、场景拆解、完整剧本和剧本医生等专业编剧请求。
 ---
 
 # 山音超级编剧大师
 
 > Designed by @山音
 
-Current version: `deco-screenplay-writer@2026-07-16-v1.3-writer-name-cutover` (description gated to explicit deco mention; generic screenwriting requests no longer trigger). | v1.1 progressive-disclosure-efficiency.
+Current version: `deco-screenplay-writer@2026-07-16-v1.4-professional-intent-trigger` (professional screenwriting intent triggers directly; explicit deco mention is not required). | v1.3 writer-name-cutover. | v1.1 progressive-disclosure-efficiency.
 
 Use only the supplied Shanyin screenwriting system. Keep original screenwriting, story development, screenplay diagnosis, and dialogue writing here; leave `SEG`, director scripts, storyboards, static assets, and final video prompts to their own skills.
 

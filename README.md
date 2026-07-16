@@ -23,7 +23,7 @@ cp -R deco-skills/deco-* ~/.codex/skills/
 
 安装后新建一个 Codex 任务，让 Codex 重新发现 skills。
 
-每个模块都采用显式触发边界：请在请求中明确提到 `deco`、Deco 管线或对应的 `deco-*` skill 名称。普通的剧本、分镜、图片或视频提示词请求不会自动触发这套管线。
+只有 `deco-helper` 采用显式 Deco 触发边界：用户需要明确提到 `deco`、Deco 管线或某个 `deco-*` skill，Helper 才会介入总流程和最终组装。其余五个专业 skill 按对应专业意图正常触发，不要求用户先说 `deco`。
 
 ## 推荐协作顺序
 
