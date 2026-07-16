@@ -13,7 +13,7 @@ Reference List:
 Prompt:
 请根据以上参考生成本段视频。故事板控制镜头顺序、运镜、人物动作、空间关系和道具关系。
 
-[原样粘贴 deco-director-designer 的完整导演设计正文]
+[原样粘贴 deco-action-designer 的完整导演设计正文]
 
 Constraints:
 [导演正文含已批准的 Voiceover 或画外发声时：不得添加导演正文之外的旁白、画外解说。否则：无旁白、无画外解说。]
