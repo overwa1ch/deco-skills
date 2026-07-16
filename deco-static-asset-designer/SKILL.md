@@ -1,14 +1,14 @@
 ---
 name: deco-static-asset-designer
-description: Invoke only when the user explicitly mentions deco (the deco pipeline or this skill by name); never trigger on generic asset/image-prompt keywords alone. Plan, discuss, lock, prompt, revise, and review reusable static visual assets from any user-provided material or stage, including storyboards. Use for asset lists; Cxx, Cxx-Lxx, Gxx, CSxx, Pxx, and Sxx assets; regional_anchor; style_aesthetic; person-led Preview; production image prompts; multi-angle and multi-shot-size nine-grid scene references; and returned-asset review. Produce only static-asset work, not screenplays, storyboards, performance, dialogue, audio design, or final video prompts.
+description: Plan, discuss, lock, prompt, revise, and review reusable static visual assets from any user-provided material or stage, including storyboards. Use for asset lists; Cxx, Cxx-Lxx, Gxx, CSxx, Pxx, and Sxx assets; regional_anchor; style_aesthetic; person-led Preview; production image prompts; multi-angle and multi-shot-size nine-grid scene references; and returned-asset review. Trigger from the professional static-asset or production-image intent; explicit deco mention is not required. Produce only static-asset work, not screenplays, storyboards, performance, dialogue, audio design, or final video prompts.
 ---
 
 # Deco Static Asset Designer
 
 Plan reusable static assets with the user, test their shared direction through Preview, then write or review asset prompts.
 
-Version: `deco-static-asset-designer@2026-07-15-v2.1-on-demand-functions`
-Changelog: v2.1 — functions are an on-demand menu: deliver exactly the named product, no sequence pressure; full chain only on explicit request. | v2.0 four-layer restructure — shared rules single-sourced in contracts.md; one asset type = one self-contained types/ file (layout contract front-loaded, exact count slots, two-layer fixed-block contract, per-type review checklist and gold example). | vocab: SFX→audio family alignment. | v1.12 visual-style skill rename.
+Version: `deco-static-asset-designer@2026-07-16-v2.2-professional-intent-trigger`
+Changelog: v2.2 — professional static-asset or production-image intent triggers directly; explicit deco mention is not required. | v2.1 — functions are an on-demand menu: deliver exactly the named product, no sequence pressure; full chain only on explicit request. | v2.0 four-layer restructure — shared rules single-sourced in contracts.md; one asset type = one self-contained types/ file (layout contract front-loaded, exact count slots, two-layer fixed-block contract, per-type review checklist and gold example). | vocab: SFX→audio family alignment. | v1.12 visual-style skill rename.
 
 ## Layers (load per stage, never all at once)
 
