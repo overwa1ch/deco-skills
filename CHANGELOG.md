@@ -2,6 +2,7 @@
 
 ## 2026-07-16
 
+- 将两个退役独立仓库更名为 `deco-helper-deprecated` 与 `deco-helper-storyboard-deprecated`，并转为 Private；`deco-skills` 保持公开。
 - 修正触发边界：只有 `deco-helper` 要求用户明确呼叫 Deco；编剧、故事板、静态资产、动作设计和视觉风格五个专业 skill 按各自专业意图正常触发。
 - 专业 skill 版本更新为 Screenplay Writer V1.4、Storyboard Designer V1.14、Static Asset Designer V2.2、Action Designer V2.6、Visual Style Extractor V1.3。
 - 建立 `overwa1ch/deco-skills`，作为 Deco 系列唯一的主发布仓库。
