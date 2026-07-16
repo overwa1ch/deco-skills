@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Cxx 基础角色资产页布局板：左=半身肖像区,右=A-pose 三视图三列。作构图参考用,低权重绑定;上传平台前转 PNG。 -->
+  <rect width="1600" height="900" fill="#d4d4d4"/>
+  <!-- 左:半身肖像区 -->
+  <rect x="50" y="50" width="520" height="800" fill="#c7c7c7" stroke="#9a9a9a" stroke-width="4"/>
+  <ellipse cx="310" cy="330" rx="120" ry="150" fill="#bdbdbd"/>
+  <path d="M 160 850 Q 160 620 310 600 Q 460 620 460 850 Z" fill="#bdbdbd"/>
+  <!-- 右:三视图三列(正/侧/背),全身完整入画 -->
+  <g fill="#c7c7c7" stroke="#9a9a9a" stroke-width="4">
+    <rect x="620" y="50" width="290" height="800"/>
+    <rect x="940" y="50" width="290" height="800"/>
+    <rect x="1260" y="50" width="290" height="800"/>
+  </g>
+  <g fill="#bdbdbd">
+    <g transform="translate(765,0)"><circle cx="0" cy="160" r="45"/><path d="M -20 205 L 20 205 L 35 480 L 22 480 L 12 810 L -12 810 L -22 480 L -35 480 Z"/><path d="M -20 220 L -95 400 L -80 410 L -18 265 Z"/><path d="M 20 220 L 95 400 L 80 410 L 18 265 Z"/></g>
+    <g transform="translate(1085,0)"><circle cx="0" cy="160" r="45"/><path d="M -18 205 L 18 205 L 28 480 L 15 480 L 10 810 L -10 810 L -15 480 L -28 480 Z"/></g>
+    <g transform="translate(1405,0)"><circle cx="0" cy="160" r="45"/><path d="M -20 205 L 20 205 L 35 480 L 22 480 L 12 810 L -12 810 L -22 480 L -35 480 Z"/><path d="M -20 220 L -95 400 L -80 410 L -18 265 Z"/><path d="M 20 220 L 95 400 L 80 410 L 18 265 Z"/></g>
+  </g>
+  <!-- 共享地线 -->
+  <line x1="620" y1="812" x2="1550" y2="812" stroke="#9a9a9a" stroke-width="3" stroke-dasharray="14 10"/>
+</svg>
