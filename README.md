@@ -37,9 +37,9 @@ cp -R deco-skills/deco-* ~/.codex/skills/
 
 ## 仓库迁移
 
-原独立仓库 [`overwa1ch/deco-helper`](https://github.com/overwa1ch/deco-helper) 和 [`overwa1ch/deco-helper-storyboard`](https://github.com/overwa1ch/deco-helper-storyboard) 已正式退役，不再作为当前版本来源。本仓库是 Deco 系列唯一的主发布仓库。
+原独立仓库已分别更名为 `overwa1ch/deco-helper-deprecated` 和 `overwa1ch/deco-helper-storyboard-deprecated`，并转为 Private，从公开列表隐藏。它们只保留历史内容，不再作为当前版本来源。本仓库是 Deco 系列唯一公开的主发布仓库。
 
-这里的 `deco-helper/` 仍是 Deco 系列中的有效协调模块；退役的是原先单独发布它的旧 GitHub 仓库。
+这里的 `deco-helper/` 仍是 Deco 系列中的有效协调模块；废弃并隐藏的是原先单独发布它的旧 GitHub 仓库。
 
 ## License
 
