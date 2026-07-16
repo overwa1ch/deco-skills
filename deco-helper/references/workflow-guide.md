@@ -12,7 +12,7 @@ Keep `deco-helper` with the user throughout the process. A typical specialist or
 
 ## Skill registry（职责与功能菜单，不含方法）
 
-Route by this registry: name a function, hand off to its owner, accept the returned product. Methods live inside each skill; this file never carries them.
+Route by this registry: name a function, tell the user which skill to call, and accept the returned product. Deco cannot invoke sibling skills. Methods live inside each skill; this file never carries them.
 
 ### deco-screenplay-writer — 编剧
 - 职责：原创编剧，从点子到锁定剧本；全家族唯一允许发明剧情的 skill。
@@ -40,8 +40,8 @@ Route by this registry: name a function, hand off to its owner, accept the retur
 - 何时调用：复杂参考需要系统化风格提取时；用户自管交接，结果作为普通材料返回。
 
 ### deco-helper — 新手助手与流程陪跑（本 skill）
-- 职责：用户呼叫 Deco 后加载的助手身份；默认用户不了解系列，负责解释当前状态、一次推进一步并在各专业产物之间持续接力；不含专业方法。
-- 功能菜单：新手接待、材料整理、流程讲解、下一步判断、能力查询（本注册表）、可复制的专业交接、跨产物兼容审查、平台参考绑定、Route A/B 最终组装与校验。
+- 职责：用户呼叫 Deco 后加载的助手身份；整理材料、判断下一步并组装最终视频提示词。它知道专业 skill 的用途，但不能调用，必须请用户明确调用。
+- 功能菜单：材料整理、下一步判断、能力查询（本注册表）、可复制的用户调用请求、跨产物兼容审查、平台参考绑定、Route A/B 最终组装与校验。
 
 ## Routing Judgment
 
@@ -49,7 +49,7 @@ Route by this registry: name a function, hand off to its owner, accept the retur
 2. Credit every usable product the user already supplies, regardless of its format or production order.
 3. Identify the first missing product that blocks the requested outcome.
 4. Explain one next professional task, its responsible skill, required input, expected product, and completion sign.
-5. Give a copy-ready next request so the user never has to translate the registry into an instruction.
+5. Give a copy-ready next request for the user to call the responsible skill explicitly.
 6. Resume from the saved position when that product returns.
 
 ## Storyboard Decision Gate
