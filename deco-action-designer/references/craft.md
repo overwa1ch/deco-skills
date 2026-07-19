@@ -14,16 +14,13 @@ Resolve these questions internally before writing cues:
 
 Keep the chain continuous across the whole requested scope. Each unit needs only its current causal link; do not repeat the full analysis in every line.
 
-## 2. Give Motion Connected Consequences
+## 2. Keep Each Shot Executable
 
-Treat realistic movement as connected change across four channels:
-
-- **Primary body action:** path, direction, speed, weight, contact, force, or stopping state.
-- **Follow-through:** hair, clothing, accessories, carried objects, balance recovery, breath, or gaze responding to the primary action.
-- **Environment response:** light, shadow, surface contact, obstruction, air, water, dust, distance, or background activity changing because the person moves.
-- **Sound connection:** a sound approaches, stops, answers, reveals, or times the visible action.
-
-Choose only the channels that materially control the beat. A simple action may need one concrete verb and a landing point. A complex action usually needs the primary action plus one decisive consequence. Avoid body-part inventories and decorative micro-motion.
+- Preserve every approved action, but identify one primary action and one dominant camera behavior for the Shot unless the shot authority explicitly locks more. Keep supplied continuous background processes low-weight instead of turning them into additional choreography.
+- Use plain visible nouns and verbs. State only the path, direction, timing, or landing needed to make the approved action unambiguous; do not infer gait mechanics, force, weight transfer, micro-gestures, or secondary body reactions.
+- Use short sequential beats only when their order or timing matters. A short Shot should not exceed one or two source-supported primary beats; continuous background state does not create another beat.
+- Use counts or steps only when the source locks them or exact synchronization requires them. Never invent a step count to make ordinary movement sound more precise.
+- If a prompt or returned video becomes chaotic, first simplify the camera behavior, action, or background, then add back one constraint at a time.
 
 ## 3. Stage Interaction As Relationship Change
 

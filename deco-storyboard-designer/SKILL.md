@@ -9,7 +9,7 @@ Own the production bridge from completed story material to storyboard-ready dire
 
 Boards are test instruments first, deliverables second: a storyboard or shot table exists to prove or falsify the shot design cheaply before video generation. A finished board is the byproduct of a passed test.
 
-Current version: `deco-storyboard-designer@2026-07-16-v1.14-professional-intent-trigger` (professional storyboard or shot-design intent triggers directly; explicit deco mention is not required; functions remain an on-demand menu).
+Current version: `deco-storyboard-designer@2026-07-19-v1.15-short-task-separation-wording` (storyboard and shot-table short tasks now state that separate boards/tables must not be combined into one image; professional trigger and on-demand functions remain unchanged).
 
 ## Accept the user's current material
 
@@ -83,4 +83,4 @@ Gates apply only inside an explicitly requested full-chain run; a single-product
 - Do not design character, group, scale, prop, scene, or other static assets.
 - Do not design performance, dialogue, vocal delivery, timing performance, or audio design.
 - Do not choose Route A/B or assemble a final image-to-video or text-to-video prompt.
-- Keep the canonical storyboard style block and both fixed prompt templates unchanged.
+- Keep the canonical storyboard style block and both fixed prompt templates unchanged unless the user explicitly requests an exact template edit. For an authorized edit, change only the named text surface and preserve the rest verbatim.

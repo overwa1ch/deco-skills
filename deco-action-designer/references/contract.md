@@ -41,7 +41,7 @@ One source-preserving paragraph fixing: target duration and scene function; entr
 When the delivery is a sequence of independently generated clips, judge each cut. If the shot **visibly continues the prior shot's state chain**（同一空间、同一产品状态、同一动作线）, open the paragraph with `开场承接：` followed by the prior shot's landing written as visible facts already true at 0.0s（已展开、已停在、已松开）, never as narrated history — generation models render present state at frame one; they cannot remember or depict "what just happened". If the cut starts a fresh setup（转场、时间或空间跳跃、独立插入镜）, do not import the prior landing: establish this shot's own 0.0s state and let the `Continuity:` block alone carry identity and world facts.
 
 ### Shot blocks
-For every Shot, include only useful controls: exact time range within the target duration; shot size, focal character when useful, camera position; foreground, subject, background, screen direction, spatial relation when they affect readability; motivated camera movement with start, path, subject relation, and landing; primary action, follow-through, listener response, relationship landing; locked dialogue at the moment spoken with concise delivery guidance; decisive sound at its visible trigger.
+For every Shot, include only useful controls: exact time range within the target duration; shot size, focal character when useful, camera position; foreground, subject, background, screen direction, spatial relation when they affect readability; motivated camera movement with start, path, subject relation, and landing; primary action, listener response, relationship landing; locked dialogue at the moment spoken with concise delivery guidance; decisive sound at its visible trigger. Preserve every source-supplied action, but introduce no unsupported body mechanics or performance actions. Keep one primary action and one dominant camera behavior unless the shot authority explicitly locks more; supplied continuous background processes may remain low-weight. Use short sequential beats only when timing matters, and use counts or steps only when the source locks them or exact synchronization requires them.
 
 One Shot carries one main story job. Preserve the shot authority exactly (storyboard, else director script, else locked material). When no approved shot structure exists, create only the minimum Shots needed, source-preserving. Only when the material leaves shot count open, use the fewest shots that can execute the process.
 
@@ -55,6 +55,7 @@ Prioritize the likely failure modes of this exact generation: wrong identity, co
 - Budgets: one or two sentences per prefix block; one or two sentences for the execution paragraph; one compact execution paragraph per Shot plus necessary dialogue or audio triggers; four to eight grouped `避免：` clauses. Exceed only when supplied complexity requires it.
 - Shot ranges are ordered, consistent with the declared duration, and never exceed it.
 - ASCII square brackets for time ranges and inline annotations: `Shot 1 [0.0-5.0s]`, `角色[压低声音]：「台词」`, `[Audio触发点：……]`. No full-width parentheses in the finished body.
+- Enclose every exact visible text string the model must render in Chinese double quotation marks `“……”`: computer or phone screens, UI messages, printed paper, signs, packaging, title cards, labels, and brand copy. Do not quote descriptive prose, control labels, Shot headings, or timecodes; keep dialogue in `「……」`.
 - Keep psychological reasoning internal; convert it into gaze, breath, posture, action, pause, voice, distance, contact, or refusal.
 - Return only the finished body — no drafting structure, notes, or analysis.
 
@@ -74,6 +75,7 @@ Audio: 无BGM。[环境声、静默、拟音、动作触发音、空间声学和
 
 **Shot 1 [开始-结束s]**
 [景别、焦段特征或镜头距离、机位、前景/主体/背景、运镜起点与落点、人物动作与反应、关系落点。]
+[画面文字如有：屏幕显示“逐字内容”。]
 [角色][说话方式]：「锁定台词」
 [必要时：Audio触发点。]
 
@@ -85,15 +87,16 @@ Audio: 无BGM。[环境声、静默、拟音、动作触发音、空间声学和
 ## Pre-flight checklist
 
 - Does every action have a playable verb and physically reachable target, with cause before response?
-- Do follow-through and environment changes support the primary motion rather than compete with it?
 - Does each interaction change distance, attention, access, route, control, or concealment when the story requires a turn?
 - Are locked lines verbatim, naturally timed, with silence/overlap/voice mode/lip sync handled only where relevant?
 - Does `Audio` open with `无BGM。` and provide a complete concise sound bed, with Shot-level repetition only at causal triggers?
 - Does the prefix reflect the actual supplied world rather than a generic reusable paragraph?
 - Is the body free of `风格前缀：`, `Reference:`, platform handles, and Route/Asset/Reference-List content?
 - Does every Shot preserve the shot authority; are any added Shot decisions minimal and source-preserving?
+- Does every Shot keep one primary action and one dominant camera behavior, with sequential beats and any counts supported by the source or synchronization need?
 - Do global and Shot-level camera rules agree; is every `固定机位` genuinely motionless?
 - Do Shot ranges fit the declared duration exactly; are brackets ASCII?
+- Are all exact visible text strings enclosed in `“……”`, while dialogue remains in `「……」`?
 - Does the execution paragraph define entry, supplied process, and ending state without adding story?
 - Are conditional blocks present only when they materially control generation?
 - Does the product stay inside director-design responsibility?

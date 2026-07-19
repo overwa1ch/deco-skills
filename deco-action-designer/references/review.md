@@ -12,11 +12,12 @@ Review Shot by Shot against each declared time range, then check cross-shot cont
 
 1. **Duration & order:** total length and each beat inside its Shot range; cause lands before response and the response registers.
 2. **Identity & continuity:** faces, wardrobe, props, positions, and states match the `Continuity:` block and supplied references across shots; the first frame matches the body's opening entry-state facts（连续镜的开场承接，或独立镜自身的起始状态）.
-3. **Action fidelity:** primary action, follow-through, listener response, and relationship landing occur as written; no invented performance.
-4. **Dialogue:** wording verbatim, speaker, order, delivery mode; lip sync only where the body controls it; no phantom voiceover.
-5. **Camera:** shared capture language holds; per-Shot position, movement path, and landing as written; no unplanned axis breaks or movement on a `固定机位`.
-6. **Audio:** `无BGM` respected; causal triggers land at their moments; spatial acoustics plausible; no phantom music, narration, or off-screen explanation.
-7. **Style & world:** period, medium, texture stay in world; no modern elements, text, subtitles, or watermarks.
+3. **Action fidelity:** primary action, listener response, and relationship landing occur as written; no invented performance.
+4. **Visible text:** every string declared inside `“……”` renders verbatim on the specified screen, paper, UI, sign, package, label, title card, or brand surface; no undeclared text appears.
+5. **Dialogue:** wording verbatim, speaker, order, delivery mode; lip sync only where the body controls it; no phantom voiceover.
+6. **Camera:** shared capture language holds; per-Shot position, movement path, and landing as written; no unplanned axis breaks or movement on a `固定机位`.
+7. **Audio:** `无BGM` respected; causal triggers land at their moments; spatial acoustics plausible; no phantom music, narration, or off-screen explanation.
+8. **Style & world:** period, medium, texture stay in world; no modern elements, undeclared text, subtitles, or watermarks.
 
 ## Findings and revision
 
