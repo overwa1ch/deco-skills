@@ -1,12 +1,39 @@
-# Style Extraction Templates
+# Elastic Style Extraction Templates
 
-Use these only when the task needs a structured artifact.
+Select one smallest matching artifact. Within it, preserve the exact field labels below, keep populated fields in listed relative order, and delete every field, subsection, list, or JSON key that has no evidence or current task value. Do not translate, rename, bold, or replace labels, and do not invent extra headings. Never output an empty placeholder, a standalone `无` or `不适用` value, or filler guessed only to complete the structure.
+
+Keep one fact in one owning field. Use `Uncertainties` only when evidence limits materially affect the answer. Return only the selected artifact without a preface or appendix; do not flatten it into free prose.
+
+## Style Lookup Result
+
+Use for a style-name, classification, or established-term query without full system extraction.
+
+Begin with `Query:` and use only the populated labels from this block exactly as written.
+
+```text
+Query:
+Canonical match:
+Supporting established terms:
+Medium or genre:
+Descriptive modifiers, not style names:
+Sources:
+- [Source and direct relevance.]
+Match strength:
+Rejected near-matches:
+Working description (non-canonical):
+Uncertainties:
+```
+
+When no exact term is confirmed, `Canonical match: none confirmed` is a substantive result, not an empty value. Include closest sourced terms when available. Use `Working description (non-canonical)` only for unmatched wording that helps the user; never promote it to an established style.
 
 ## Analysis Card
 
+Use for a complete evidence-backed extraction. Omit whole sections that do not carry distinct information.
+
 ```text
 Style name:
-Canonical status: established / composite / no confirmed exact match
+Working description (non-canonical):
+Canonical status:
 Established-style lookup:
 - Candidate term:
 - Source:
@@ -34,24 +61,12 @@ Stage 3 - Style system:
 - Space / composition:
 - Light / atmosphere:
 - Color / texture:
-- Rules / constraints:
 
 Keep:
-- <rule>
+- [Stable repeated choice.]
 
 Avoid:
-- <rule>
-
-Repeated choices:
-- Composition:
-- Camera / lens:
-- Lighting:
-- Color:
-- Materials / texture:
-- Environment / set dressing:
-- Subject treatment:
-- Symbols / motifs:
-- Finish / rendering:
+- [Excluded or suppressed trait.]
 
 Degrees of freedom:
 - Flexible:
@@ -60,28 +75,37 @@ Degrees of freedom:
 Evidence strength:
 - Strong:
 - Provisional:
+
+Uncertainties:
 ```
 
-If no exact established term is confirmed, use `Working description (non-canonical)` instead of `Style name`.
+Use either `Style name` or `Working description (non-canonical)` according to the lookup result. Do not repeat Keep/Avoid rules inside the Stage 3 blocks.
 
 ## Three-Stage Brief
 
+Use when the user wants the extraction summarized through its three stages rather than a full card.
+
 ```text
-1. Constraint extraction:
-   Find what is absent, rejected, muted, or non-negotiable.
+Constraint extraction:
+- [Absent, rejected, muted, or non-negotiable traits supported by evidence.]
 
-2. Sample purification:
-   Compare different-content samples and remove subject-specific noise.
+Sample purification:
+- [Cross-sample repeated choices after subject-specific noise is removed.]
 
-3. System building:
-   Write a reusable style guide using:
-   - Space and composition
-   - Light and atmosphere
-   - Color and texture
-   - Rules and constraints
+System building:
+- Space / composition:
+- Light / atmosphere:
+- Color / texture:
+- Rules / constraints:
+
+Uncertainties:
 ```
 
+If only one stage has substantive content, output only that stage. If one sample limits purification, disclose that under `Uncertainties`; do not invent cross-sample evidence.
+
 ## Reusable JSON Prompt
+
+Use for a reusable generation template. Keep valid JSON and preserve the relative key order below, but omit every irrelevant key and empty container. Placeholder values are allowed only when the user requests a reusable template whose purpose is to be filled later.
 
 ```json
 {
@@ -111,19 +135,17 @@ If no exact established term is confirmed, use `Working description (non-canonic
     "keep": ["<stable repeated choice>"],
     "avoid": ["<excluded trait or model default>"]
   },
-  "stage_notes": {
-    "constraints": ["<immutable condition from stage 1>"],
-    "commonalities": ["<cross-sample repeated choice from stage 2>"],
-    "system_blocks": ["space_composition", "light_atmosphere", "color_texture", "rules_constraints"]
-  },
   "rendering": "<finish, texture, fidelity, sharpness>",
-  "constraints": "<negative constraints and quality boundaries>"
+  "constraints": "<quality boundaries not already owned above>",
+  "uncertainties": ["<material evidence limit>"]
 }
 ```
 
+When the user specifies a different schema, preserve that schema and apply the same omission rule. Do not wrap it in an additional Analysis Card.
+
 ## Transfer Validation
 
-Test the style on a new subject that does not appear in the references.
+Use when testing whether a style system survives a different subject or context.
 
 ```text
 New subject:
@@ -131,18 +153,22 @@ Expected style signals:
 Rules that must survive:
 Rules that may flex:
 Likely failure modes:
+Observed transfer result:
 Corrections if it drifts:
+Uncertainties:
 ```
 
-## Common Failure Modes
+Output only fields supported by the proposed or observed test. Do not claim an observed result before a generated sample exists.
+
+## Common failure modes
 
 - Inventing a polished-sounding style name before checking established vocabularies.
-- Treating a descriptive phrase, `-ism`, `-core`, or hybrid label as an established style without sources.
+- Treating a descriptive phrase, `-ism`, `-core`, or hybrid label as established without sources.
 - Forcing one label when a combination of existing styles is more accurate.
 - Calling a near-match canonical while ignoring defining features it lacks.
 - Copying subject matter instead of extracting repeatable choices.
 - Using one image as proof of a whole style.
-- Keeping abstract adjectives without translating them into visual controls.
-- Forgetting negative constraints, so the model fills defaults back in.
+- Keeping abstract adjectives without translating them into visible controls.
+- Duplicating the same rule across multiple fields or artifacts.
+- Filling every template field despite missing evidence.
 - Over-constraining every dimension and removing useful variation.
-- Treating color as vibe instead of palette, hue distribution, contrast, and temperature.

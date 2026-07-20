@@ -7,8 +7,8 @@ description: Plan, discuss, lock, prompt, revise, and review reusable static vis
 
 Plan reusable static assets with the user, test their shared direction through Preview, then write or review asset prompts.
 
-Version: `deco-static-asset-designer@2026-07-16-v2.2-professional-intent-trigger`
-Changelog: v2.2 — professional static-asset or production-image intent triggers directly; explicit deco mention is not required. | v2.1 — functions are an on-demand menu: deliver exactly the named product, no sequence pressure; full chain only on explicit request. | v2.0 four-layer restructure — shared rules single-sourced in contracts.md; one asset type = one self-contained types/ file (layout contract front-loaded, exact count slots, two-layer fixed-block contract, per-type review checklist and gold example). | vocab: SFX→audio family alignment. | v1.12 visual-style skill rename.
+Version: `deco-static-asset-designer@2026-07-20-v2.3-structured-prompt-output`
+Changelog: v2.3 — production prompts now retain the selected asset type's numbered field structure and field labels instead of flattening them into one paragraph; field definitions, field order, fixed blocks, Preview templates, and the multi-angle fixed prompt are unchanged. | v2.2 — professional static-asset or production-image intent triggers directly; explicit deco mention is not required. | v2.1 — functions are an on-demand menu: deliver exactly the named product, no sequence pressure; full chain only on explicit request. | v2.0 four-layer restructure — shared rules single-sourced in contracts.md; one asset type = one self-contained types/ file (layout contract front-loaded, exact count slots, two-layer fixed-block contract, per-type review checklist and gold example).
 
 ## Layers (load per stage, never all at once)
 
@@ -66,7 +66,7 @@ Outside copy-ready prompt steps, use concise professional language and add only 
 未决事项：
 ```
 
-When delivering production asset prompts, add the platform-settings line defined in contracts.md.
+When delivering a production asset prompt, retain the selected `types/<asset>.md` template's numbered structure and field labels, fill the applicable fields in their defined order, and add the platform-settings line from `contracts.md`. Do not flatten the template into free prose.
 
 ## Boundaries
 

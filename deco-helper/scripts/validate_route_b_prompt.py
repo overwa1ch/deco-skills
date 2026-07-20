@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Route B asset bindings and Prompt citations."""
+"""Validate Route B asset bindings and adaptive execution citations."""
 
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ import sys
 
 SEGMENT_HEADING = re.compile(r"(?m)^SEG\d+\s*$")
 SECTIONS = re.compile(
-    r"Asset List:\s*\n(?P<assets>.*?)\n\s*\nPrompt:\s*\n(?P<prompt>.*?)"
+    r"Asset List:\s*\n(?P<assets>.*?)\n\s*\nPrompt:\s*\n(?P<prompt>.*)"
     r"\n\s*\nConstraints:\s*\n(?P<constraints>.*)\Z",
     re.DOTALL,
 )
@@ -30,11 +30,41 @@ ASSET_FORM_SUFFIX = re.compile(
     r"(?:三视图|九宫格|参考图|参考资产|素材图|资产图|人物图|场景图|产品图)$"
 )
 SHOT_HEADING = re.compile(r"(?m)^\*{0,2}Shot\s+\d+.*$")
+FIELD_HEADING = re.compile(
+    r"(?m)^(?P<label>"
+    r"Use case|Primary request|Scene/background|Subject|Style/format|"
+    r"Lighting/mood|Color palette|Camera|Acting|Continuity|Physics|"
+    r"Action|Timing/beats|Audio|Text \(verbatim\)|Dialogue|Constraints|Avoid|"
+    r"Style|Lighting|Color|SFX"
+    r"):\s*"
+)
+EXECUTION_FIELDS = {"Subject", "Action", "Timing/beats"}
+AVOID_HEADING = re.compile(r"(?m)^(?:Avoid:\s*|避免：\s*)")
+EMPTY_AVOID_CONSTRAINT = re.compile(r"(?m)^禁止出现：\s*$")
 # One asset, one name: generic alias tokens must not denote a bound asset in
 # Prompt or Constraints; only the exact quoted identity name may. Longest first
 # so 对比产品 does not additionally report 产品.
 GENERIC_ALIAS_TOKENS = ("对比产品", "自家产品", "折叠体", "商品", "人物", "产品")
 ALIAS_EXEMPT_TERMS = ("产品演示", "产品反转", "纸就产品", "成品资产")
+
+
+def execution_scope(prompt: str) -> tuple[str, list[str]]:
+    """Return the Subject/Action/Timing or Shot text that may carry assets."""
+    markers: list[tuple[int, int, str, str]] = []
+    for match in FIELD_HEADING.finditer(prompt):
+        markers.append((match.start(), match.end(), "field", match.group("label")))
+    for match in SHOT_HEADING.finditer(prompt):
+        markers.append((match.start(), match.end(), "shot", "Shot"))
+    markers.sort(key=lambda item: item[0])
+
+    chunks: list[str] = []
+    carriers: list[str] = []
+    for index, (start, _end, kind, label) in enumerate(markers):
+        end = markers[index + 1][0] if index + 1 < len(markers) else len(prompt)
+        if kind == "shot" or label in EXECUTION_FIELDS:
+            chunks.append(prompt[start:end])
+            carriers.append(label)
+    return "\n".join(chunks), carriers
 
 
 def split_segments(text: str) -> list[tuple[str, str]]:
@@ -72,10 +102,17 @@ def validate(text: str) -> tuple[list[str], int, int]:
 
         asset_text = section_match.group("assets").strip()
         prompt = section_match.group("prompt")
-        shot_start = SHOT_HEADING.search(prompt)
-        shot_text = prompt[shot_start.start() :] if shot_start else ""
-        if not shot_start:
-            errors.append(f"{heading}: no timecoded Shot execution found")
+        carrier_text, carriers = execution_scope(prompt)
+        if not carriers:
+            errors.append(
+                f"{heading}: Prompt has no Subject, Action, Timing/beats, or Shot execution carrier"
+            )
+        if AVOID_HEADING.search(prompt):
+            errors.append(
+                f"{heading}: Prompt retains Avoid/避免; move its content to outer Constraints"
+            )
+        if EMPTY_AVOID_CONSTRAINT.search(section_match.group("constraints")):
+            errors.append(f"{heading}: empty 禁止出现 line must be omitted")
         asset_lines = [line.strip() for line in asset_text.splitlines() if line.strip()]
         names: list[str] = []
         handles: list[str] = []
@@ -110,9 +147,10 @@ def validate(text: str) -> tuple[list[str], int, int]:
                 errors.append(f"{heading}: Prompt does not cite {citation}")
             else:
                 citation_count += count
-            if citation not in shot_text:
+            if citation not in carrier_text:
                 errors.append(
-                    f"{heading}: timecoded Shot execution does not cite {citation}; Continuity-only citation is insufficient"
+                    f"{heading}: Subject/Action/Timing/Shot execution does not cite {citation}; "
+                    "Continuity-only or summary-only citation is insufficient"
                 )
 
         for handle in handles:

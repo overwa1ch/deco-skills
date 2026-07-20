@@ -14,11 +14,12 @@ Resolve these questions internally before writing cues:
 
 Keep the chain continuous across the whole requested scope. Each unit needs only its current causal link; do not repeat the full analysis in every line.
 
-## 2. Keep Each Shot Executable
+## 2. Choose And Keep The Execution Unit Executable
 
-- Preserve every approved action, but identify one primary action and one dominant camera behavior for the Shot unless the shot authority explicitly locks more. Keep supplied continuous background processes low-weight instead of turning them into additional choreography.
+- Use one `Action` for a continuous process, add `Timing/beats` only when sequence or synchronization matters, and use Shot blocks only for multiple or authoritative shots. Do not turn a single continuous take into `Shot 1` merely to satisfy a format.
+- Preserve every approved action, but identify one primary action and one dominant camera behavior for each execution unit unless the shot authority explicitly locks more. Keep supplied continuous background processes low-weight instead of turning them into additional choreography.
 - Use plain visible nouns and verbs. State only the path, direction, timing, or landing needed to make the approved action unambiguous; do not infer gait mechanics, force, weight transfer, micro-gestures, or secondary body reactions.
-- Use short sequential beats only when their order or timing matters. A short Shot should not exceed one or two source-supported primary beats; continuous background state does not create another beat.
+- Use short sequential beats only when their order or timing matters. A short execution unit should not exceed one or two source-supported primary beats; continuous background state does not create another beat.
 - Use counts or steps only when the source locks them or exact synchronization requires them. Never invent a step count to make ordinary movement sound more precise.
 - If a prompt or returned video becomes chaotic, first simplify the camera behavior, action, or background, then add back one constraint at a time.
 
@@ -49,14 +50,14 @@ In group scenes, give the primary action full clarity and compress the group int
 
 ## 5. Use Timing Without False Precision
 
-When reliable timing exists:
+When reliable timing exists and materially affects execution:
 
 - keep ranges ordered, continuous when the task requires continuity, and non-overlapping unless overlap is intentional;
 - budget spoken words, breath, action preparation, contact, reaction, and settling time;
 - place the cause before the response and allow the response to register;
 - shorten the action or flag a duration conflict when the beat cannot fit.
 
-When reviewing material without reliable timing, use ordered beats or relative timing such as `先`, `随即`, `停半拍`, `被打断后`, and `落稳后`. A finished timecoded director body requires a user-supplied or explicitly approved target duration; ask for it instead of inventing seconds.
+When exact timing is unnecessary, keep the order inside `Action` with relative timing such as `先`, `随即`, `停半拍`, `被打断后`, and `落稳后`. A timecoded body requires a user-supplied or explicitly approved target duration; ask for it instead of inventing seconds.
 
 ## 6. Place Sound At Causal Points
 
@@ -68,7 +69,7 @@ Use sound when it changes action timing, attention, space, or relationship:
 - a door, object, device, or voice reveals new information;
 - a brief sound accent lands a relationship or emotional turn.
 
-Write one complete non-musical sound bed for the scope: ambience, room tone, necessary routine foley, action-triggered sound, spatial acoustics, transitions, and meaningful silence. Keep the global bed concise; repeat a sound inside a Shot only when its exact trigger changes action or editing.
+Write one complete non-musical sound bed for the scope: ambience, room tone, necessary routine foley, action-triggered sound, spatial acoustics, transitions, and meaningful silence. Keep the global bed concise; move a sound into its beat or Shot only when the exact trigger changes action or editing.
 
 ## 7. Assign Reference Roles
 
@@ -84,7 +85,7 @@ The user may override this allocation. When references conflict, preserve the de
 
 ## 8. Compress For Execution
 
-For each beat, write:
+For each chosen execution unit, write:
 
 1. the dominant action;
 2. the trigger or first response when it changes execution;
@@ -92,7 +93,7 @@ For each beat, write:
 4. exact dialogue at the moment it is spoken;
 5. the key sound only when it times or lands the beat.
 
-One or two sentences per unit is usually enough. Merge the ending state into the last action instead of adding a repeated summary. Sentence budgets per block live in `contract.md`.
+One or two sentences per unit is usually enough. Merge the ending state into the last action instead of adding a repeated summary. Do not add an unlabeled story paragraph beside Action, beats, or Shots.
 
 ## 9. Strong/Weak Pairs
 

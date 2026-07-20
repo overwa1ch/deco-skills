@@ -1,129 +1,232 @@
-# Director Body Contract（单一真源）
+# Adaptive Director Body Contract（单一真源）
 
-What the finished director-design body must be. All structure and output rules live here; `craft.md` owns method. Type conventions: English control labels, Chinese content, and the fixed Chinese `避免：` label.
+Define the finished `deco-action-designer` body here. `craft.md` owns method; this file owns field selection, execution-carrier selection, formatting, and reviewable completeness.
 
-## Fixed structure (in order)
+## Core rule
 
-1. `Style:` `Lighting:` `Camera:` — required prefix blocks.
-2. `Color:` `Acting:` `Continuity:` `Physics:` — conditional, only when they materially control generation, in this order between `Camera` and `Audio`.
-3. `Audio:` — required; starts with `无BGM。`.
-4. One source-preserving execution-structure paragraph — unlabeled, opens with `[目标时长]秒[段落名称或场景功能]。`.
-5. One or more timecoded `**Shot N [start-end s]**` blocks.
-6. `避免：` — required.
+First identify information that is present in the supplied material and materially controls generation. Output only the fields that carry that information.
 
-The body starts directly at `Style:`. No meta headers (`风格前缀：` is retired), no `Reference:` line, platform handles, `Mixed N`, upload order, Asset List, Reference List, or Route headings.
+- Do not output an empty field, placeholder, a standalone `无` or `不适用` field value, or filler written only to complete a schema.
+- Give each fact one owning field. If another field already expresses it completely, omit the duplicate field or sentence.
+- An omitted field is not a defect unless its missing information makes this task non-executable.
+- `Audio` always carries real content because every Deco director body requires no BGM and a complete non-musical sound state. Designed silence is content; an empty audio placeholder is not.
 
-## Block specs
+## Canonical field order
 
-### Style
-Visible medium, realism level, period, production world, image texture, and explicit style exclusions. Concrete controls before prestige labels; keep `8K IMAX`, film-stock, frame-rate, or shutter language only when it supports the requested camera character. Derive from the current material — never reuse a generic style paragraph when the world, medium, era, light, or camera language differs.
-
-### Lighting
-Motivated sources, direction, color temperature or warm/cool relation when useful, subject/background exposure relation, atmosphere, and any story-driven light change. Preserve practical spatial facts such as which area stays dark or out of frame.
-
-### Camera
-The shared capture language only: lens behavior, depth of field, stability, handheld character, dominant movement logic, edit or continuous-shot logic, and the story motivation for movement. Leave focal length, position, foreground, path, and landing of each shot to the Shot blocks. Picture-edit logic lives here; sound-edit behavior (J/L-cuts) lives in `Audio`.
-
-Use `固定机位` only for a camera with no translation or rotation; never pair it with push, pull, pan, tilt, track, or orbit. When Shots use different positions, keep `Camera:` at the shared level and leave positions to the Shots. Global and Shot-level camera rules must not contradict.
-
-### Conditional blocks
-- `Color:` decisive palette, saturation, contrast, and material colors that must stay stable.
-- `Acting:` ensemble-wide performance density, vocal weight, dialogue mode, restraint, theatricality, or lip-sync rules.
-- `Continuity:` identities, wardrobe, props, hand use, positions, states, and cross-shot invariants. This is the invariants block — returned-video revisions cite it.
-- `Physics:` visible rules for water, smoke, cloth, impact, reflection, transformation, or occlusion transitions.
-
-### Audio
-Start with `无BGM。`, then the complete non-musical sound design: ambience, room tone, silence, foley, action-triggered sound, spatial acoustics, and sound transitions (J-cut / L-cut when supported). Dialogue wording, delivery, and voice performance stay in `Acting` or the relevant Shot; use `Audio` only for the acoustic space or edit behavior of the voice. Repeat a decisive sound again at its exact Shot moment only when the trigger changes action or editing.
-
-### Execution-structure paragraph
-One source-preserving paragraph fixing: target duration and scene function; entry state inherited from the prior moment when supplied; people, objects, and spatial relationship; the concrete dramatic process to execute; the visible ending state or handoff. Do not repeat the prefix. Do not add dialogue, turns, motives, events, or outcomes. This is the causal spine shared by all Shots.
-
-When the delivery is a sequence of independently generated clips, judge each cut. If the shot **visibly continues the prior shot's state chain**（同一空间、同一产品状态、同一动作线）, open the paragraph with `开场承接：` followed by the prior shot's landing written as visible facts already true at 0.0s（已展开、已停在、已松开）, never as narrated history — generation models render present state at frame one; they cannot remember or depict "what just happened". If the cut starts a fresh setup（转场、时间或空间跳跃、独立插入镜）, do not import the prior landing: establish this shot's own 0.0s state and let the `Continuity:` block alone carry identity and world facts.
-
-### Shot blocks
-For every Shot, include only useful controls: exact time range within the target duration; shot size, focal character when useful, camera position; foreground, subject, background, screen direction, spatial relation when they affect readability; motivated camera movement with start, path, subject relation, and landing; primary action, listener response, relationship landing; locked dialogue at the moment spoken with concise delivery guidance; decisive sound at its visible trigger. Preserve every source-supplied action, but introduce no unsupported body mechanics or performance actions. Keep one primary action and one dominant camera behavior unless the shot authority explicitly locks more; supplied continuous background processes may remain low-weight. Use short sequential beats only when timing matters, and use counts or steps only when the source locks them or exact synchronization requires them.
-
-One Shot carries one main story job. Preserve the shot authority exactly (storyboard, else director script, else locked material). When no approved shot structure exists, create only the minimum Shots needed, source-preserving. Only when the material leaves shot count open, use the fewest shots that can execute the process.
-
-### 避免
-Prioritize the likely failure modes of this exact generation: wrong identity, costume, prop, or hand use; wrong entrance, position, orientation, background, or spatial direction; wrong action, reaction, dialogue, sound, or duration; camera behavior that breaks the intended language; unwanted text, subtitles, watermark, face drift, style drift, or unsupported effects. Not a history of every past model failure — keep the highest-risk constraints.
-
-## Output discipline（跨块规则，只在此处声明）
-
-- Preserve locked dialogue wording, speaker, and order exactly.
-- State each control at its owning layer: shared rules in the prefix, causal spine in the execution paragraph, moment-specific execution in Shots, likely failures in `避免：`. Do not restate unchanged information across layers.
-- Budgets: one or two sentences per prefix block; one or two sentences for the execution paragraph; one compact execution paragraph per Shot plus necessary dialogue or audio triggers; four to eight grouped `避免：` clauses. Exceed only when supplied complexity requires it.
-- Shot ranges are ordered, consistent with the declared duration, and never exceed it.
-- ASCII square brackets for time ranges and inline annotations: `Shot 1 [0.0-5.0s]`, `角色[压低声音]：「台词」`, `[Audio触发点：……]`. No full-width parentheses in the finished body.
-- Enclose every exact visible text string the model must render in Chinese double quotation marks `“……”`: computer or phone screens, UI messages, printed paper, signs, packaging, title cards, labels, and brand copy. Do not quote descriptive prose, control labels, Shot headings, or timecodes; keep dialogue in `「……」`.
-- Keep psychological reasoning internal; convert it into gaze, breath, posture, action, pause, voice, distance, contact, or refusal.
-- Return only the finished body — no drafting structure, notes, or analysis.
-
-## Template skeleton
+Keep every field that is used in this relative order. There is no required-field checklist apart from the substantive `Audio` contract above.
 
 ```text
-Style: [可见媒介、真实度、年代、制作世界、影像质感与关键风格排除。]
-Lighting: [光源、方向、色温或冷暖关系、主体与背景明暗、空气状态和剧情性光线变化。]
-Camera: [全段共同的摄影质感、景深、稳定性、运镜逻辑、剪辑或连续镜头逻辑，以及镜头运动的情节动机。]
-[可选：Color: 决定性的综合色彩系统。]
-[可选：Acting: 全段共同的表演密度、声线、对白模式或群体表演规则。]
-[可选：Continuity: 跨镜头必须保持的身份、妆造、道具、站位与状态。]
-[可选：Physics: 水、烟、布料、碰撞、倒影、变形或遮挡转场等物理规则。]
-Audio: 无BGM。[环境声、静默、拟音、动作触发音、空间声学和声音转场。]
-
-[目标时长]秒[段落名称或场景功能]。[只根据已批准材料写明承接状态、人物与道具、空间关系、具体执行过程和结尾状态，不新增剧情。]
-
-**Shot 1 [开始-结束s]**
-[景别、焦段特征或镜头距离、机位、前景/主体/背景、运镜起点与落点、人物动作与反应、关系落点。]
-[画面文字如有：屏幕显示“逐字内容”。]
-[角色][说话方式]：「锁定台词」
-[必要时：Audio触发点。]
-
-[按需继续 Shot 2、Shot 3……]
-
-避免：[只写本段最高风险的身份、空间、动作、声音、连续性、时长、文字和风格错误。]
+Use case:
+Primary request:
+Scene/background:
+Subject:
+Style/format:
+Lighting/mood:
+Color palette:
+Camera:
+Acting:
+Continuity:
+Physics:
+Action:
+Timing/beats:
+Audio:
+Text (verbatim):
+Dialogue:
+Constraints:
+Avoid:
 ```
+
+When Shot blocks are the execution carrier, place them where `Action` and `Timing/beats` would appear: after any used `Physics` field and before `Audio`. Do not add a replacement summary paragraph.
+
+The body starts directly at its first populated field. Do not add a title, preface, `风格前缀：`, `Reference:`, platform handle, `Mixed N`, upload order, Asset List, Reference List, or Route heading.
+
+## Choose one execution carrier
+
+### Action only
+
+Use `Action:` for one continuous action when exact internal timing is not needed. Do not create `Timing/beats`, `Shot 1`, or an unlabeled story summary.
+
+### Action plus Timing/beats
+
+Use `Action:` plus `Timing/beats:` for a single shot or continuous take whose order, synchronization, or stage change matters. Let `Action` own only participant or tool roles and the overall task identity; let the beats own every ordered step, stage change, sound trigger, and landing. Do not repeat the beat verbs or ending inside `Action`, and do not create `Shot 1` or an unlabeled story summary.
+
+### Shot blocks
+
+Use one or more `**Shot N [start-end s]**` blocks only when:
+
+- the material contains multiple shots;
+- an approved storyboard, director script, or other shot authority locks shot decisions; or
+- the user explicitly requests Shot output.
+
+Preserve authoritative shot count, order, framing, movement, action, space, props, dialogue, and outcomes. When shot count is genuinely open, use the fewest shots that execute the supplied process. With Shot blocks, omit global `Action:`, `Timing/beats:`, and any unlabeled execution-summary paragraph.
+
+Every exact time range requires a user-supplied or explicitly approved target duration. Keep ranges ordered and within that duration; do not invent seconds.
+
+## Field specs
+
+### Use case
+
+Include only when the evaluation purpose, test target, platform task, or downstream use changes how the model should execute the request.
+
+### Primary request
+
+State the requested deliverable and decisive format facts only when they are not already fully carried by another field.
+
+### Scene/background
+
+Describe the visible setting, background occupancy, era, or spatial context that must be generated. Omit it when a supplied image already fixes the background and no change or preservation instruction is needed.
+
+### Subject
+
+Name the visible people, objects, materials, or products and their initial relevant state. Do not use this field as a continuity checklist.
+
+### Style/format
+
+Specify visible medium, realism, image texture, capture character, period treatment, aspect ratio, or decisive format only when the task supplies or needs them. Translate abstract praise into visible controls. Do not invent a prestige style paragraph.
+
+### Lighting/mood
+
+Specify motivated sources, direction, subject/background exposure, atmosphere, or a story-driven light change only when light materially controls the result.
+
+### Color palette
+
+Specify stable palette, saturation, contrast, or material color relationships only when color is independently controlled.
+
+### Camera
+
+State shared framing or capture behavior: shot size, angle, lens character, depth of field, stability, movement, edit logic, or aspect ratio, but only the controls that matter. In Shot mode, keep shot-specific position, path, subject relation, and landing inside each Shot.
+
+Use `固定机位` only when the camera has no translation or rotation; never pair it with push, pull, pan, tilt, track, or orbit.
+
+### Acting
+
+Use only for actual human or character performance, vocal weight, dialogue mode, restraint, theatricality, listener behavior, or lip-sync control. Object motion, hands performing a craft operation, and ordinary subject movement do not automatically require `Acting`.
+
+### Continuity
+
+Use only for identity, wardrobe, prop, position, state, edit, or cross-shot invariants that must survive a cut or transformation. A single continuous action with no independent invariant does not require it.
+
+### Physics
+
+Use only for non-default material, fluid, smoke, cloth, collision, deformation, reflection, transformation, contact, or occlusion rules. State the causal physical behavior once; do not repeat it in `Action` or `Avoid` unless the latter names a distinct visible failure.
+
+### Action
+
+Write the primary visible process with playable verbs, reachable targets, cause before response, and the intended landing. Keep supplied actions; do not infer gait mechanics, force, weight transfer, micro-gestures, or secondary reactions.
+
+### Timing/beats
+
+Use short ordered beats only when timing or synchronization matters. Each beat owns its time-specific action, change, dialogue, visible text, or sound trigger. Use counts or steps only when the source locks them or synchronization requires them.
+
+### Shot blocks
+
+For each Shot, include only useful visible controls: time range, framing, camera position or movement, spatial relationship, primary action, first useful response, relationship landing, locked dialogue, visible text, and decisive sound trigger. One Shot has one main story job, one primary action, and one dominant camera behavior unless the shot authority explicitly locks more.
+
+For independently generated clips, begin a visibly continuous Shot with the prior landing as facts already true at 0.0s. A fresh setup defines its own frame-one state. Never narrate history the model cannot remember.
+
+### Audio
+
+Start with `无BGM。`, then design the complete non-musical sound state that matters: ambience, room tone, foley, action-triggered sound, voice acoustics, spatial behavior, transitions, and meaningful silence. If the requested result is silent, state the designed silence precisely. Put an exact causal sound in a beat or Shot when its trigger controls timing; keep the global field for the shared sound bed.
+
+### Text (verbatim)
+
+Use only when the model must render exact visible text. Enclose every exact string in Chinese double quotation marks `“……”`. Put time-bound text in the relevant beat or Shot instead of repeating it here.
+
+### Dialogue
+
+Use only when actual spoken content exists. Preserve approved wording, speaker, order, voice mode, and delivery. Keep dialogue in `「……」`. Put time-bound dialogue in the relevant beat or Shot instead of repeating it here.
+
+### Constraints
+
+Include only positive invariants explicitly required by the material and not already owned by another field. Do not convert every descriptive fact into a constraint.
+
+### Avoid
+
+Include only likely, observable failure modes specific to this generation. Omit the field when no independent high-risk failure is present. Do not build a generic history of model failures or repeat positive rules in negative form.
+
+## Output discipline
+
+- Preserve locked story facts, dialogue, speaker, order, and outcomes exactly.
+- Preserve supplied shot authority; compile it into executable model language without redesigning it.
+- Keep psychological reasoning internal; convert it into gaze, breath, posture, action, pause, voice, distance, contact, or refusal only when supported.
+- Keep each fact at one layer. Global fields own shared controls; Action, beats, or Shots own execution; `Constraints` owns unique positive invariants; `Avoid` owns distinct high-risk failures.
+- Do not emit both a global execution summary and a detailed execution carrier.
+- Use ASCII square brackets for time ranges and inline annotations: `Shot 1 [0.0-5.0s]`, `角色[压低声音]：「台词」`, `[Audio trigger: ...]`.
+- Return only the finished body, without notes or analysis.
+
+## Adaptive skeletons
+
+### Continuous action
+
+```text
+[Only populated fields before execution, in canonical order.]
+Action: [One continuous visible process and landing.]
+Audio: 无BGM。[Complete non-musical sound state.]
+[Only populated Text, Dialogue, Constraints, or Avoid fields, in canonical order.]
+```
+
+### Single shot with precise beats
+
+```text
+[Only populated fields before execution, in canonical order.]
+Action: [Concise whole process.]
+Timing/beats:
+- [0.0-1.0s] [First meaningful stage.]
+- [1.0-3.2s] [Second meaningful stage.]
+- [3.2-4.0s] [Landing.]
+Audio: 无BGM。[Complete non-musical sound state.]
+[Only populated Text, Dialogue, Constraints, or Avoid fields, in canonical order.]
+```
+
+### Multiple or authoritative shots
+
+```text
+[Only populated global fields through Physics, in canonical order.]
+
+**Shot 1 [start-end s]**
+[Only this Shot's executable visible and audible controls.]
+
+**Shot 2 [start-end s]**
+[Only this Shot's executable visible and audible controls.]
+
+Audio: 无BGM。[Shared non-musical sound state not already owned by a Shot trigger.]
+[Only populated Text, Dialogue, Constraints, or Avoid fields, in canonical order.]
+```
+
+## Gold example: 4-second clay test
+
+```text
+Use case: AI视频模型的手部与软质材料物理连续性测试。
+Primary request: 生成一条写实的4秒竖屏手作视频。
+Scene/background: 简洁的浅灰白桌面，安静室内，没有其他工具或杂物。
+Subject: 一双结构自然稳定的成人手；一个手掌大小的白色黏土半身像，开场时已有完整脸部、头颈、肩膀和多层衣褶，后脑没有头发。
+Style/format: 9:16竖屏写实手机手作教程质感，连续实拍感，无定格动画或跳帧。
+Lighting/mood: 柔和均匀的中性顶光，白色黏土纹理清楚。
+Camera: 固定俯斜微距近景，主体居中，全程无变焦、摇移或切镜。
+Physics: 黏土只在手指实际接触并施压的位置变形，附加块逐步与后脑融合，不自行融化、增殖或瞬间变形。
+Action: 一只手全程只负责托稳半身像，另一只手是唯一塑形执行者，只处理后脑的附加黏土。
+Timing/beats:
+- [0.0-1.0s] 独立小块黏土被贴稳在后脑。
+- [1.0-3.2s] 指腹沿上缘和两侧接缝按压、推开并向下抹合。
+- [3.2-4.0s] 手指离开，完成状态稳定展示。
+Audio: 无BGM。只有轻微室内底噪和指腹摩擦柔软黏土的近距离声音，无旁白。
+Constraints: 始终只有一个半身像和一块附加黏土；既有脸部、衣褶、肩膀和整体比例保持不变。
+Avoid: 多指或缺指，手指穿透黏土，手与雕像粘连，雕像重置或复制，新增工具，字幕、水印或任何文字。
+```
+
+The example intentionally has no `Acting`, `Continuity`, `Color palette`, story summary, or `Shot 1`; `Action` owns hand roles and the overall landing, `Timing/beats` owns step detail, and physics, invariants, and failure modes each have one owner.
 
 ## Pre-flight checklist
 
-- Does every action have a playable verb and physically reachable target, with cause before response?
-- Does each interaction change distance, attention, access, route, control, or concealment when the story requires a turn?
-- Are locked lines verbatim, naturally timed, with silence/overlap/voice mode/lip sync handled only where relevant?
-- Does `Audio` open with `无BGM。` and provide a complete concise sound bed, with Shot-level repetition only at causal triggers?
-- Does the prefix reflect the actual supplied world rather than a generic reusable paragraph?
-- Is the body free of `风格前缀：`, `Reference:`, platform handles, and Route/Asset/Reference-List content?
-- Does every Shot preserve the shot authority; are any added Shot decisions minimal and source-preserving?
-- Does every Shot keep one primary action and one dominant camera behavior, with sequential beats and any counts supported by the source or synchronization need?
-- Do global and Shot-level camera rules agree; is every `固定机位` genuinely motionless?
-- Do Shot ranges fit the declared duration exactly; are brackets ASCII?
-- Are all exact visible text strings enclosed in `“……”`, while dialogue remains in `「……」`?
-- Does the execution paragraph define entry, supplied process, and ending state without adding story?
-- Are conditional blocks present only when they materially control generation?
+- Does every emitted field carry unique task-specific control information?
+- Are empty fields, placeholders, filler, and redundant restatements absent?
+- Is the execution carrier the smallest sufficient one: Action, Action plus Timing/beats, or Shots?
+- If Shots are used, are global Action, Timing/beats, and an unlabeled execution summary absent?
+- If exact time ranges are used, do they fit the approved duration?
+- Are cause, action, response, and landing executable and source-preserving?
+- Are `Acting`, `Continuity`, and `Physics` present only for their actual professional purposes?
+- Does `Audio` start with `无BGM。` and describe a substantive complete sound state?
+- Are exact visible strings in `“……”` and dialogue in `「……」`, only when they exist?
+- Do `Constraints` and `Avoid` contain unique information, and is `Avoid` omitted when there is no independent high-risk failure?
+- Is the body free of `Reference:`, platform handles, and Route/Asset/Reference-List content?
 - Does the product stay inside director-design responsibility?
-
-## Gold example（最终输出形态）
-
-```text
-Style: 写实电影质感，1985年中国北方县城供销社，自然主义表演，胶片颗粒与低饱和色调，无任何现代元素。
-Lighting: 冬末上午的冷白天光从临街玻璃窗斜入，与货架上方日光灯偏绿的光混合，柜台区亮、货架深处暗，空气中有浮尘。
-Camera: 中焦为主的稳定机位组，浅景深突出人物，运镜只服务注意力转移，两个镜头之间为硬切。
-Continuity: 陈秀兰45岁，深蓝的确良工作外套、齐耳短发别黑色发卡；刘小根16岁，灰色学徒褂、袖口过长；搪瓷缸白底红字；两人相对位置以柜台L形转角为锚。
-Audio: 无BGM。营业厅空旷的房间音，远处算盘声与街道人声垫底；搪瓷缸落地的碎裂声是全段声音焦点，碎裂后半秒静默，再进扫帚与瓷片的刮擦声。
-
-10秒双人柜台戏。承接上一段：陈秀兰在柜台后核对账本，刘小根在L形转角外侧货架前擦拭搪瓷缸。搪瓷缸脱手落地碎裂，刘小根慌忙蹲下徒手去捡，陈秀兰放下笔绕出柜台，用鞋尖把最大的瓷片拨向墙角，递下一句话；段落结束于刘小根起身取扫帚、陈秀兰转身回柜台的状态。
-
-**Shot 1 [0.0-4.0s]**
-中景，柜台L形转角为前景，刘小根为主体，背景货架虚化。他左手扶缸右手擦拭，缸沿一滑脱手，搪瓷缸砸在水磨石地面碎裂弹开；他肩膀一缩，立即蹲下伸手去抓最近的碎片。
-[Audio触发点：0.8s碎裂声，随后半秒全场静默。]
-
-**Shot 2 [4.0-10.0s]**
-中近景，机位在柜台内侧齐胸高度，陈秀兰为主体。她笔尖一顿，合上账本绕出柜台走向刘小根，两步落定，用鞋尖把最大的瓷片拨向墙角，低头看他。
-陈秀兰[平静，不高]：「先扫，别用手。」
-刘小根[小声]：「哎。」
-她转身回柜台，背景里刘小根起身去取靠在货架边的扫帚。
-[Audio触发点：9.0s扫帚落地的第一声刮擦。]
-
-避免：陈秀兰面部与基础角色参考不一致、刘小根学徒褂消失或改样、搪瓷缸碎裂前后位置跳变、画面出现字幕或任何文字、镜头越过柜台轴线、碎裂声与画面不同步、总时长超过10秒。
-```
-
-示例演示的约定：正文直接以 `Style:` 开头；条件块只用了 `Continuity`（其余省略）；`Audio` 以 `无BGM。` 开头并给完整声床；执行段承接—过程—结尾且不加戏；因先于果（碎裂声在前，反应在后）；心理转化为可见动作（肩膀一缩、笔尖一顿）；台词逐字挂在时间点上；ASCII 方括号；`避免：` 七条按当次风险分组。

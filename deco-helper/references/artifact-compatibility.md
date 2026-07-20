@@ -1,17 +1,19 @@
 # Artifact Compatibility and Assembly Rules
 
-Single source for cross-product compatibility review and final-assembly rules; SKILL.md and the templates cite this file instead of restating it. Review only whether the supplied products can be assembled for the user's requested route; assemble by the rules below. Preserve specialist content.
+Single source for cross-product compatibility review and final assembly. Review whether the supplied products can be assembled for the requested route; preserve specialist content. Never author a missing specialist field or repair professional content inside Helper.
 
 ## Shared checks
 
 - Confirm one current video scope or `SEG` label.
-- Confirm one content type for the fixed tone line.
+- Confirm the content type when Route A needs its fixed tone line.
 - Confirm that names for the same character, prop, place, and scope are unambiguous across products.
-- Confirm that platform handles point to the user-intended references and every binding has a declared role.
-- Confirm that the director-design product belongs to the current scope.
-- Confirm that it contains `Style`, `Lighting`, `Camera`, `Audio: 无BGM。` (legacy bodies may use `SFX: 无BGM。`; both pass), one source-preserving execution paragraph, ordered timecoded Shots, and `避免`.
-- Confirm that the director-design product contains no `Reference:` line, platform handle, `Reference List`, or `Asset List`.
-- Confirm that Shot ranges fit the declared duration and unresolved issues do not block generation.
+- Confirm that platform handles resolve to the user-intended approved references and every binding has a declared role.
+- Confirm that the director-design product belongs to the current scope and contains no `Reference:`, platform handle, `Reference List`, or `Asset List`.
+- Accept both legacy V2 fixed director bodies and V3 adaptive bodies. Do not require a fixed combination of `Style`, `Lighting`, `Camera`, execution paragraph, Shot, or Avoid labels.
+- Review semantic sufficiency: the fields and execution carrier actually present must express the requested visible process, necessary initial or ending state, and any task-critical timing, camera, performance, physics, text, dialogue, invariants, or failure controls. Omitted fields pass when they add no independent control value.
+- Confirm that `Audio: 无BGM。` exists and supplies a substantive non-musical sound state. Legacy `SFX: 无BGM。` also passes.
+- If exact ranges are present, confirm that they are ordered and fit the approved duration. Do not require timecodes from a body that intentionally uses Action only.
+- Reject unresolved contradictions or missing information that makes this particular task non-executable. Return such a body to `deco-action-designer`; do not fill the gap here.
 
 If names differ but identity is clear, normalize only the model-facing display label and keep a temporary mapping. If identity is unclear, request one binding decision.
 
@@ -21,40 +23,48 @@ If names differ but identity is clear, normalize only the model-facing display l
 - Necessary static references are bound by visible names and platform handles.
 - The optional Preview image is included only when supplied and selected.
 - The outer `Reference List` names the storyboard as the model-facing controller of shot order, camera movement, character action, spatial relationships, and prop relationships.
-- The complete director-design product can be pasted unchanged.
+- Paste the complete director-design product unchanged, whether it is legacy fixed or V3 adaptive.
 
 ## Route B checks
 
-- Every model-facing reference has a quoted referable screen-object identity name, a platform handle, an asset form, and a role.
-- Every entry maps to an actual approved finished file and confirmed platform handle. A multi-view, nine-grid, or multi-state board remains one asset; its panels, states, crops, details, and uses are not separate inventory entries unless separate finished assets and handles actually exist.
-- The actual static references collectively cover every identity and structure that the current SEG cannot safely infer from text alone. Bind a multi-state board once and reuse its exact quoted identity name for every state or detail shown inside it; exclude unrelated inventory. If required coverage is absent, request a static-asset product instead of inventing an identity name or handle.
-- Every asset in the outer `Asset List` uses `“[referable screen-object identity]” = @[confirmed platform handle] - [asset form and use]` and is cited by that exact same quoted identity inside each relevant timecoded Shot sentence where it is visible or controlling. A `Continuity`-only or summary-only citation fails. The quoted identity must grammatically denote the person, place, vehicle, or prop being controlled, such as `“车主”`, `“黑色内饰车辆”`, `“破旧长柄竞品”`, or `“AUTOWOEL前挡遮阳伞”`; asset-form labels such as `“人物三视图”` and `“场景九宫格”` fail. The raw handle stays in `Asset List`, and no separate `Asset Use:` or asset-summary block is present.
-- The storyboard is absent from the model-facing outer `Asset List`.
-- The director-design product contains enough timing, action, dialogue, camera, lighting, and audio detail for execution.
-- The director sentence order and execution content can be preserved while minimal visible-name asset citations are inserted at the states they control; the trailing `避免：` clauses can be extracted once and moved into `Constraints` without content loss.
-
-When director-design content is insufficient or internally contradictory, request a revised `deco-action-designer` product. Do not repair it during integration.
+- Every model-facing reference has a quoted referable screen-object identity name, a confirmed platform handle, an asset form, and a role.
+- Every entry maps to an approved finished file. A multi-view, nine-grid, or multi-state board remains one asset unless separate finished files and handles actually exist.
+- The static references cover identities and structures the current SEG cannot safely infer from text alone. If required coverage is absent, request a static-asset product instead of inventing a name or handle.
+- Every asset in `Asset List` uses `“[referable screen-object identity]” = @[confirmed platform handle] - [asset form and use]`.
+- Cite each exact quoted identity in an execution-bearing location where it visibly controls generation: `Subject`, `Action`, `Timing/beats`, or a Shot. A citation only in `Continuity`, an explanation, a summary, or the outer list fails.
+- For a legacy V2 body, cite each visible asset in its relevant timecoded Shot. For a V3 body, use whichever allowed execution carrier the body actually contains; never add Shot solely for asset citation.
+- Keep the storyboard out of the model-facing `Asset List`.
+- Preserve the director body's field order, execution carrier, timing, action, dialogue, camera, lighting, acting, physics, audio, and outcomes while inserting only minimal identity citations.
+- If the body ends with `Avoid:` or legacy `避免：`, remove that field from `Prompt` and move its content once into `Constraints` as `禁止出现：`. If neither exists, omit the `禁止出现：` line completely.
 
 ## Outer reference binding rule
 
-Use only confirmed platform bindings that resolve to actual approved finished assets. Route A writes them in `Reference List`; Route B writes them in `Asset List` as `“[referable screen-object identity]” = @[confirmed platform handle] - [asset form and use]`. The equality binding makes the exact quoted identity name the Prompt-facing reference. The identity name must be usable in a natural execution sentence; keep asset format and role after the hyphen. Do not expose internal IDs, provisional references, invented derivative asset names, or invented semantic handles. Positional handles such as `@图片1` must follow the actual upload order for that SEG and remain in `Asset List`; Prompt cites the bound quoted identity name instead of repeating the positional handle.
+Use only confirmed platform bindings that resolve to approved finished assets. Route A writes them in `Reference List`; Route B writes them in `Asset List` as `“[referable screen-object identity]” = @[confirmed platform handle] - [asset form and use]`.
+
+The equality binding makes the quoted identity the Prompt-facing name. It must work naturally as the person, place, vehicle, product, or prop in an execution sentence. Keep asset format and role after the hyphen. Do not expose internal IDs, provisional references, invented derivative asset names, or invented semantic handles. Positional handles such as `@图片1` must follow actual upload order and remain outside Prompt.
 
 Never add, replace, or rewrite a `Reference:` line inside the director-design body.
 
 ## Director-body preservation
 
-Route A pastes the complete `deco-action-designer` body unchanged. Route B preserves its sentence order and execution content; the only permitted edits are inserting the minimal quoted-identity citation into the exact `Continuity`, execution, or Shot sentence each asset controls, and extracting the single trailing `避免：` line once into `Constraints` as `禁止出现：`. Never summarize, repair, retime, split, or duplicate director execution or audio design.
+- Route A pastes the complete `deco-action-designer` body byte-for-byte.
+- Route B preserves the supplied structure and execution content. Its only permitted edits are inserting the minimal quoted identity into `Subject`, `Action`, `Timing/beats`, or the relevant Shot, and extracting one trailing `Avoid:` or `避免：` into outer `Constraints`.
+- Do not summarize, repair, retime, split, add a Shot, create a missing field, duplicate sound design, or convert between legacy and adaptive structures.
 
 ## One asset, one name
 
-After binding, every mention of a bound asset anywhere in Prompt or Constraints uses its exact quoted identity name. Replace near-synonym aliases such as `人物`, `产品`, `商品`, `折叠体`, `对比产品`, `自家产品` with the bound name. Keep each product part to one canonical part name (once `软包端` and `外露硬端` are chosen, variants like `软包圆头` or `硬尖` are errors). Do not name an asset that is not bound in the current SEG; rewrite cross-SEG comparisons into results directly visible in this SEG. Image-form labels such as `人物三视图参考` and genre or technique words such as `产品演示` or `纸就产品` are not asset names and are exempt. `scripts/validate_route_b_prompt.py` reports generic alias tokens as errors.
+After binding, every mention of a bound asset in Prompt or Constraints uses its exact quoted identity name. Replace asset-denoting aliases such as `人物`, `产品`, `商品`, `折叠体`, `对比产品`, or `自家产品` with the bound name. Keep each product part to one canonical part name. Do not name an asset absent from the current SEG; rewrite cross-SEG comparisons into results directly visible here.
+
+Image-form labels such as `人物三视图参考` and genre or technique words such as `产品演示` or `纸就产品` are not asset identities and are exempt. `scripts/validate_route_b_prompt.py` reports generic asset aliases outside quoted identities.
 
 ## Final format check
 
-- Route B contains no separate `影片调性` line; its film tone comes from the preserved Director `Style:` block.
+- Route B contains no separate `影片调性` line; tone comes from whatever populated director fields carry it.
 - All template placeholders are replaced.
 - The outer reference list matches the selected route and contains only confirmed bindings.
-- The Route B asset-name set equals the actual approved asset inventory for that SEG; a reference board appears once regardless of how many internal panels or states are used.
-- In Route B, Director sentence order, timings, actions, camera, acting, lighting, audio, dialogue, and outcomes match the approved product; differences are limited to inline citations using the exact quoted identity names bound in `Asset List`. Every listed identity appears in the timecoded Shot execution where it is used; `Continuity` alone does not count. No asset-form label is used as an identity citation, raw handles do not appear inside Prompt, no `Asset Use:` or asset-summary block exists, and the original `避免：` clauses appear once under `Constraints` as `禁止出现：`.
-- Director bodies containing `Voiceover`, `Dialogue`, or other approved speech include `画面中不得生成文字、字幕或对白气泡。`
-- If the director-design body contains approved voiceover or off-screen speech, use `不得添加导演正文之外的旁白、画外解说。`; otherwise use `无旁白、无画外解说。`. No separate no-BGM constraint is added outside the director-design `Audio` block (legacy bodies: `SFX`).
+- The Route B asset-name set equals the approved asset inventory for that SEG; a reference board appears once regardless of internal panels or states.
+- Every Route B identity is cited in `Subject`, `Action`, `Timing/beats`, or a Shot. `Continuity` alone does not count. No raw handle, asset-form identity, `Asset Use:` section, or asset-summary block appears.
+- When the director body supplied `Avoid:` or `避免：`, its content appears once as `禁止出现：` under outer `Constraints`; when it supplied neither, no empty `禁止出现：` line appears.
+- Bodies containing approved `Voiceover`, `Dialogue`, or other speech include `画面中不得生成文字、字幕或对白气泡。`
+- If the body contains approved voiceover or off-screen speech, use `不得添加导演正文之外的旁白、画外解说。`; otherwise use `无旁白、无画外解说。`.
+- Do not add a separate no-BGM constraint outside director `Audio` or legacy `SFX`.

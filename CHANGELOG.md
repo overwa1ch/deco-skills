@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-07-20
+
+- `deco-helper` 升级为 V3.8，包含 V3.7–V3.8 累积更新：保留各专业产物的模板结构；兼容旧 V2 固定导演正文与新 V3 弹性正文；用语义充分性检查代替固定字段组合检查；Route B 可在 `Subject`、`Action`、`Timing/beats` 或 Shot 中绑定资产，无 Avoid 时省略空限制。
+- `deco-static-asset-designer` 升级为 V2.3：六类生产资产提示词保留编号、字段名、层级和字段顺序；Preview、视觉方向、九宫格固定提示词和资产几何定义保持不变。
+- `deco-action-designer` 升级为 V3.0：字段只在承担独立控制信息时出现；单一连续动作、精确单镜和多镜头分别使用 `Action`、`Action + Timing/beats` 或 Shot；删除剧情总述与 Shot 的重复层；继续提供完整无BGM声音设计。
+- `deco-visual-style-extractor` 升级为 V1.5，包含 V1.4–V1.5 累积更新：交付物使用匹配的结构化模板；按请求选择 Style Lookup、Analysis Card、Three-Stage Brief、Reusable JSON Prompt 或 Transfer Validation；模板内部省略空字段和无证据字段。
+- Screenplay Writer V1.4 与 Storyboard Designer V1.15 保持不变。Helper Route A、Static Asset 固定提示词、Storyboard canonical style、固定故事板提示词和固定分镜表提示词通过冻结面校验。
+- 六项 skill 通过结构校验、fresh-process 前向测试、Route A/B 兼容检查、live/repository 树一致性和公开发布安全检查。
+
 ## 2026-07-19
 
 - `deco-helper` 升级为 V3.6：明确承担 Deco 系列的用法与跨模块制作经验层；新增“剧本初稿 → 故事板草稿测试 → 静态资产 → 资产支持的分镜表复核 → 动作设计 → 最终组装”推荐路线，同时保留用户独立调用任一专业功能的选择。

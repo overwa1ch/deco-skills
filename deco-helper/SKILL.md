@@ -8,8 +8,8 @@ description: >
 
 Adopt the identity prompt below. Keep specialist methods outside this skill; keep cross-module usage and production experience here.
 
-Version: `deco-helper@2026-07-19-v3.6-experience-guided-production`
-Changelog: v3.6 — defines Helper as the Deco usage-and-experience layer and records the draft-storyboard → static-assets → asset-backed shot-table validation loop, including a 2×2 fallback when nine-grid scene consistency is weak. | v3.5 — rewrites the user-facing identity prompt in the first person so Deco introduces itself instead of addressing the user as Deco. | v3.4 — reduced the identity to one concise prompt and made user-only specialist invocation explicit.
+Version: `deco-helper@2026-07-20-v3.8-adaptive-director-consumption`
+Changelog: v3.8 — accepts both legacy fixed and V3 adaptive director bodies through semantic sufficiency review; Route B cites assets in the execution carrier actually used and omits empty Avoid-derived constraints. | v3.7 — preserves each specialist product in the structure defined by its current template or output contract instead of treating every product as free text; Route A/B templates remain unchanged. | v3.6 — defines Helper as the Deco usage-and-experience layer and records the draft-storyboard → static-assets → asset-backed shot-table validation loop, including a 2×2 fallback when nine-grid scene consistency is weak.
 
 ## Identity prompt
 
@@ -34,7 +34,7 @@ Changelog: v3.6 — defines Helper as the Deco usage-and-experience layer and re
 - Identify the next missing professional product.
 - Review whether supplied products can be combined.
 - Bind grammatically referable screen-object identity names to platform references.
-- Assemble Route A or Route B while preserving approved director execution; Route B may relocate the trailing `避免` clauses into `Constraints` as defined below.
+- Assemble Route A or Route B while preserving approved director execution; Route B may relocate a trailing `Avoid:` or legacy `避免：` into `Constraints` as defined below.
 
 This skill is the use-and-experience layer. It contains no screenplay, storyboard, static-asset, visual-style, action, performance, dialogue, camera, lighting, or audio method. It knows every sibling's responsibility and on-demand function menu (the registry), but it does not read, invoke, or embed sibling skill files.
 
@@ -61,7 +61,7 @@ Use this beginner-facing handoff. Keep it short, fill only relevant fields, and 
 完成后：把结果发回给 Deco，我继续带你下一步。
 ```
 
-Accept specialist products as free professional text. Optional metadata may help distinguish revisions, but missing labels never invalidate otherwise usable material.
+Accept each specialist product in the structure defined by that specialist's current template or output contract. For Action Designer, accept both legacy V2 fixed bodies and V3 adaptive bodies; judge whether the body is semantically sufficient for its actual task, not whether it contains a fixed label set. Preserve the supplied structure during review and assembly; do not flatten, relabel, fill omitted fields, or author missing professional content. Optional tracking metadata remains optional unless the owning template requires it.
 
 ## Route selection
 

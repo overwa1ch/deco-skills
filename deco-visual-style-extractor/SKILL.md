@@ -5,7 +5,7 @@ description: "Identify established visual styles and extract reusable style syst
 
 # Deco Visual Style Extractor
 
-Current version: `deco-visual-style-extractor@2026-07-16-v1.3-professional-intent-trigger` (professional visual-style analysis or extraction intent triggers directly; explicit deco mention is not required). | v1.2 deco-only-trigger superseded. | v1.1 existing-style-lookup-first.
+Current version: `deco-visual-style-extractor@2026-07-20-v1.5-elastic-artifact-routing` (choose the smallest matching structured artifact and output only evidence-backed or task-required fields). | v1.4 every deliverable uses the matching structured template. | v1.3 professional-intent-trigger. | v1.2 deco-only-trigger superseded. | v1.1 existing-style-lookup-first.
 
 ## Core Principle
 
@@ -47,30 +47,28 @@ Translate constraints and commonalities into a reusable style guide with four de
 
 Validate by transfer. Apply the system to a new subject; if it only works on the original content, it is still copying rather than extracting style.
 
-## Output Shape
+## Artifact routing
 
-Prefer this structure unless the user requests another format:
+Choose the smallest artifact that directly answers the request:
 
-- Style thesis: one concise sentence.
-- Evidence: samples or source notes used.
-- Established-style lookup: candidate terms, sources, match strength, and rejected near-matches.
-- Classification: canonical parent style, supporting established styles, medium or genre, and descriptive modifiers.
-- Keep rules: stable repeated choices.
-- Avoid rules: excluded or suppressed traits.
-- Stage 1 constraints: exclusions and immutable conditions.
-- Stage 2 commonalities: repeated choices across samples.
-- Stage 3 style system: composition, light, atmosphere, color, texture, rules.
-- Prompt or JSON template: reusable, with placeholders.
-- Validation test: one new-subject generation brief.
-- Uncertainties: weak evidence, single-sample risks, or missing references.
+- Style name or classification lookup only: `Style Lookup Result`.
+- Full evidence-backed extraction: `Analysis Card`.
+- Concise explanation of the extraction stages: `Three-Stage Brief`.
+- Reusable generation structure: `Reusable JSON Prompt`, or the user's specified structure.
+- Cross-subject portability test: `Transfer Validation`.
 
-If lookup finds no exact term, write:
+Do not append the other artifacts unless requested. Read `references/style-extraction-templates.md`, use the matching structure, and keep its populated fields in relative order. Preserve the selected template's exact field labels; do not translate, rename, bold, or replace them with improvised headings.
 
-- `Canonical match: none confirmed.`
-- `Closest established styles: ...`
-- `Working description (non-canonical): ...`
+Within the selected artifact:
 
-Never present the working description as an established style.
+- Output a field only when evidence exists or the current task genuinely needs it.
+- Omit empty headings, empty lists, empty JSON keys, placeholders, standalone `无` or `不适用` values, and filler inferred only to complete the template.
+- Keep each fact in one owning field; do not restate the same rule across classification, stages, Keep, Avoid, and validation.
+- When insufficient evidence matters, state it in `Uncertainties` instead of inventing a conclusion.
+- Stay structured; do not flatten the artifact into free prose.
+- Return only the selected artifact. Do not add a preface, recommendation section, search-query appendix, or another heading outside its fields.
+
+When lookup finds no exact established term, report that as a substantive classification result, give the closest sourced terms when available, and label any unmatched wording `Working description (non-canonical)`. Never present a working description as an established style.
 
 ## Prompting Guidance
 
@@ -86,4 +84,4 @@ Likewise, do not convert a visible-choice summary into a new `-ism`, `-core`, mo
 
 ## References
 
-For copy-ready analysis cards, JSON templates, and validation checklists, read `references/style-extraction-templates.md`.
+For every deliverable, read `references/style-extraction-templates.md` and use only the smallest matching structured template.
