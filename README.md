@@ -9,8 +9,8 @@ Deco 是一套面向 AI 视频生产的模块化 Codex skills。用户说“deco
 | `deco-helper` | V3.8 | Deco 用法与经验层；整理材料、判断下一步、检查跨模块兼容性并组装最终视频提示词。 |
 | `deco-screenplay-writer` | V1.4 | 故事点子、人物设计、结构大纲、节拍表、场景拆解、完整剧本与剧本诊断。 |
 | `deco-storyboard-designer` | V1.15 | SEG 拆分、场景布局、导演脚本、分镜设计、镜头表和分镜审查。 |
-| `deco-static-asset-designer` | V2.3 | 静态资产规划、Preview、结构化生产提示词、修订与成图审查。 |
-| `deco-action-designer` | V3.0 | 按任务选择动作、表演、摄影、光影、声音、Timing 或 Shot 等执行字段，并审查生成视频。 |
+| `deco-static-asset-designer` | V2.5 | 静态资产规划、Preview、参考图优先的结构化生产提示词、修订与成图审查。 |
+| `deco-action-designer` | V3.5 | 按任务选择动作、表演、摄影、光影、声音、Timing 或 Shot 等执行字段，并审查生成视频。 |
 | `deco-visual-style-extractor` | V1.5 | 从参考材料中检索既有风格，并按请求交付最小可复用视觉风格产物。 |
 
 ## 安装
@@ -28,10 +28,11 @@ cp -R deco-skills/deco-* ~/.codex/skills/
 ## 输出结构
 
 - 专业产物保留所属 skill 的模板或输出合同结构。
-- `deco-action-designer` 只写当前任务中承担独立控制作用的字段；连续动作使用 `Action`，精确单镜使用 `Action + Timing/beats`，多镜头或已有镜头权威使用 Shot。
+- `deco-static-asset-designer` 以用户提供的参考图承载已清楚可见的规格；正式提示词保留字段名和相对顺序，不显示数字或字母序号，只补目标变化、布局、身份锚点与真实漂移风险。
+- `deco-action-designer` 只写当前任务中承担独立控制作用的字段；连续动作使用 `Action`，精确单镜使用 `Action + Timing/beats`，多镜头或已有镜头权威使用 Shot。Shot 内局部时间从 `0.0s` 起算，正向不变量与独立失败风险统一进入一个 `Constraints` 字段。
 - `deco-visual-style-extractor` 按请求选择 Style Lookup、Analysis Card、Three-Stage Brief、Reusable JSON Prompt 或 Transfer Validation，并省略无证据、无当前用途的字段。
 - `deco-helper` 同时消费旧版固定导演正文和新版弹性导演正文；Route A 保留外层 `Reference List`，Route B 保留外层 `Asset List / Prompt / Constraints`。
-- 每段导演正文都包含实质性的无BGM声音设计；导演正文不写 `Reference:` 或平台绑定。
+- 未明确提供音乐时，每段导演正文默认使用无BGM的完整环境声与 SFX；明确提供音乐或要求绝对静音时按该声音状态执行。导演正文不写 `Reference:` 或平台绑定。
 
 ## 新手使用方式
 

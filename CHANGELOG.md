@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-07-21
+
+- `deco-static-asset-designer` 升级为 V2.5，包含 V2.4–V2.5 累积更新：正式资产提示词保留字段名与相对顺序但移除可见数字 / 字母序号；用户提供参考图时，以图像作为可见身份、结构、材质、颜色、标记和状态的主要规格，只补目标变化、布局、关键身份锚点与真实漂移风险。
+- Static Asset 的几何契约、呈现契约与用户指定状态 / 布局继续完整输出；Preview、视觉方向、九宫格固定提示词逐字节不变。
+- `deco-action-designer` 升级为 V3.5，包含 V3.1–V3.5 累积更新：Shot 内局部 Action 时间从 `0.0s` 起算；吸收 Sora 的平台无关提示知识并保持借用字段原义；全局字段与每个 Shot 双向校验；正向不变量与独立失败风险合并为唯一 `Constraints` 字段，不再输出单独 `Avoid`。
+- 清洁、修复、整理、损伤消除、前后对比与产品功效 Shot 必须在动作前写明可生成的场景初态，包括污物 / 损伤 / 乱序的类型、数量或密度、分布与位置；展示和收纳 Shot 写明干净、空置或整齐基线。
+- Action 的默认声音分支仍为无BGM加完整环境声 / SFX；用户或锁定材料明确提供音乐时准确保留音乐，明确要求绝对静音时不添加任何声音。
+- Helper V3.8、Screenplay Writer V1.4、Storyboard Designer V1.15 与 Visual Style Extractor V1.5 保持不变；Helper Route B 已验证兼容新 Action 正文内部的单一 `Constraints` 与 Subject / Action / Timing / Shot 四类资产执行载体。
+
 ## 2026-07-20
 
 - `deco-helper` 升级为 V3.8，包含 V3.7–V3.8 累积更新：保留各专业产物的模板结构；兼容旧 V2 固定导演正文与新 V3 弹性正文；用语义充分性检查代替固定字段组合检查；Route B 可在 `Subject`、`Action`、`Timing/beats` 或 Shot 中绑定资产，无 Avoid 时省略空限制。

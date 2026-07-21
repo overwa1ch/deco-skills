@@ -7,8 +7,8 @@ description: Plan, discuss, lock, prompt, revise, and review reusable static vis
 
 Plan reusable static assets with the user, test their shared direction through Preview, then write or review asset prompts.
 
-Version: `deco-static-asset-designer@2026-07-20-v2.3-structured-prompt-output`
-Changelog: v2.3 — production prompts now retain the selected asset type's numbered field structure and field labels instead of flattening them into one paragraph; field definitions, field order, fixed blocks, Preview templates, and the multi-angle fixed prompt are unchanged. | v2.2 — professional static-asset or production-image intent triggers directly; explicit deco mention is not required. | v2.1 — functions are an on-demand menu: deliver exactly the named product, no sequence pressure; full chain only on explicit request. | v2.0 four-layer restructure — shared rules single-sourced in contracts.md; one asset type = one self-contained types/ file (layout contract front-loaded, exact count slots, two-layer fixed-block contract, per-type review checklist and gold example).
+Version: `deco-static-asset-designer@2026-07-21-v2.5-reference-first`
+Changelog: v2.5 — uploaded reference images are the primary visible specification; image-bound prompts describe only requested changes, layout, key identity anchors, and real drift risks. | v2.4 — production prompts retain field labels and field order without visible numeric prefixes. | v2.3 — production prompts retain the selected asset type's field structure and field labels instead of flattening them into one paragraph. | v2.2 — professional static-asset or production-image intent triggers directly; explicit deco mention is not required. | v2.1 — functions are an on-demand menu: deliver exactly the named product, no sequence pressure; full chain only on explicit request. | v2.0 four-layer restructure — shared rules single-sourced in contracts.md; one asset type = one self-contained types/ file (layout contract front-loaded, exact count slots, two-layer fixed-block contract, per-type review checklist and gold example).
 
 ## Layers (load per stage, never all at once)
 
@@ -20,6 +20,8 @@ Changelog: v2.3 — production prompts now retain the selected asset type's numb
 ## Route from the user's actual materials
 
 - Accept prose, scripts, tables, images, storyboards, moodboards, reference boards, partial assets, platform links, contradictory drafts, or any mixture.
+- When the user provides a reference image, inspect it first and use its visible content as the primary specification for identity, silhouette, construction, materials, colors, markings, and state. Identify only the key anchors, ambiguities, and requested changes that affect generation.
+- Keep image-bound prompts compact. Let the reference image carry details it already shows clearly; write only the binding instruction, target layout or state, a few identity-critical anchors, and real drift controls. Do not transcribe the image into an exhaustive verbal inventory.
 - Do not require an upstream artifact, identifier system, schema, approval state, or fixed starting stage.
 - Distinguish explicit visual facts, user decisions, provisional inference, and material conflicts.
 - Use storyboards as evidence for visible state, props, composition, and space. Do not redesign their shot sequence.
@@ -66,7 +68,7 @@ Outside copy-ready prompt steps, use concise professional language and add only 
 未决事项：
 ```
 
-When delivering a production asset prompt, retain the selected `types/<asset>.md` template's numbered structure and field labels, fill the applicable fields in their defined order, and add the platform-settings line from `contracts.md`. Do not flatten the template into free prose.
+When delivering a production asset prompt, retain the selected `types/<asset>.md` template's field labels, fill the applicable fields in their defined order without numeric prefixes, and add the platform-settings line from `contracts.md`. Do not flatten the template into free prose.
 
 ## Boundaries
 
