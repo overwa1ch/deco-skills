@@ -59,15 +59,15 @@ Use observation, concealment, approach, pursuit, withdrawal, interception, yield
 
 In group scenes, give the primary action full clarity and compress the group into one shared low-weight response unless an individual response changes the story.
 
-## 6. Design Dialogue And Visible Text For Action
+## 6. Execute Approved Dialogue And Visible Text For Action
 
-- Preserve locked wording, speaker, and order exactly.
+- Accept only wording explicitly locked by the user or approved in the supplied screenplay. Preserve wording, speaker, and order exactly.
 - Check that each line fits the available duration with room for breath, pause, interruption, and listener response.
 - Attach dialogue to an action, withheld action, or change of tactic. Do not decorate every line with a gesture.
 - Give the speaker at most one action or state that changes delivery.
 - Give the listener at most the first useful response unless later reactions create a new beat.
 - Control lip movement only when sync, deliberate silence, closed-mouth listening, overlap, or off-screen delivery matters.
-- Propose new wording only when the user requests dialogue writing or revision. Mark proposed lines clearly until approved.
+- When wording is missing, provisional, contradictory, or needs invention/revision, report that boundary and route the wording decision to `deco-screenplay-writer`; never propose alternatives here.
 - Preserve supported voiceover, off-screen speech, phone/radio speech, overlap, and silence when the task includes them; report technical conflicts instead of silently converting the mode.
 - Keep exact visible text short when the material allows it. Preserve its exact wording and specify its screen, surface, or frame position; use a stable, legible camera state when authority leaves that decision open.
 - Keep dialogue in its dedicated field or owning timecode line, label speakers consistently, and use only the number of short lines that can fit with action, breath, and response.

@@ -166,7 +166,7 @@ Use Sora's meaning: `<exact text>`. Include only when the model must render exac
 
 ### Dialogue
 
-Use Sora's dedicated dialogue block with short, consistently labeled speaker lines. Include only when actual spoken content exists. Preserve approved wording, speaker label, order, voice mode, and delivery. Keep dialogue in `「……」`, keep lines short enough for the available beat, and use consistent speaker labels. Put time-bound dialogue in the relevant beat or Shot instead of repeating it here.
+Use Sora's dedicated dialogue block with short, consistently labeled speaker lines. Include only when actual spoken content exists and its wording is explicitly locked by the user or approved in the supplied screenplay. Preserve approved wording, speaker label, order, and voice mode exactly; control only delivery, acting, lipsync, pauses, timing, placement, and acoustics. If wording is absent, provisional, contradictory, too long, or requires invention/rewrite, report the conflict and route the wording decision to `deco-screenplay-writer`; do not create alternatives. Keep dialogue in `「……」`, keep lines short enough for the available beat, and use consistent speaker labels. Put time-bound dialogue in the relevant beat or Shot instead of repeating it here.
 
 ### Constraints
 
