@@ -1,5 +1,44 @@
 # Changelog
 
+## 2026-07-22
+
+- 六项 skill 完成协调健康修复：Helper V3.9、Screenplay V1.5、Storyboard V1.16、Static Asset V2.6、Action V3.8 与 Visual Style V1.6。
+- Helper 对齐 Action 的无BGM、明确音乐、绝对静音三分支，新增 Route A validator 并补全 Route B 的正文保护、故事板排除、占位符、Audio 和资产清单检查；Route A/B 固定模板逐字节不变。
+- Screenplay 统一八步名称与编号，允许已有材料直接进入对应产品，明确拥有原创 / 改写对白，并把审批菜单收口为单一来源。Action 只负责已批准台词的表演、口型、停顿、声音和镜头执行。
+- Storyboard 接受任意阶段与混合材料，区分单产品 / full-chain Scene SVG 路由，删除失效 handoff 与冗余 READY Gate，并统一固定故事板 / 分镜表的 `SEGXX` 运行时替换；canonical style 和两个固定模板未改。
+- Static Asset 新增 `Pxx-state` 与 `2×2` 四宫格场景 fallback；现有 Preview、视觉方向和九宫格固定提示词未改。Visual Style 收紧为 style layer，Established style 必须有来源与匹配强度，Analysis Card 只保留一个 Evidence strength owner。
+- 新增无第三方依赖的公共健康检查、匿名合同 fixtures 与 `validate-deco-skills` GitHub Actions status check。
+- `deco-action-designer` 升级为 V3.7，包含 V3.6–V3.7 累积更新：多镜头或既有镜头权威仍使用全片时间的 `Shot N [start-end s]` 标题；Shot 内动作改为从 `0.0s` 起算的直接局部时间码行，统一格式为 `0.2-0.6s: 动作描述`。
+- Shot 内不再输出 `Action:`、`beat N`、圆括号、方括号或项目符号包装；无阶段变化的镜头使用一条覆盖完整镜长的局部时间码，有阶段变化时使用最少量的连续时间码行。
+- Action V3.5 的弹性字段选择、Sora 字段原义、全局与 Shot 双向一致性、完整自适应 Audio、单一 `Constraints`、首帧场景状态和 Reference / Route 禁止项全部保留。
+- Helper Route B 已验证可在 Shot 执行载体中消费直接局部时间码；Helper V3.8、Screenplay Writer V1.4、Storyboard Designer V1.15、Static Asset Designer V2.5 与 Visual Style Extractor V1.5 保持不变，冻结提示词表面逐字节不变。
+
+## 2026-07-21
+
+- `deco-static-asset-designer` 升级为 V2.5，包含 V2.4–V2.5 累积更新：正式资产提示词保留字段名与相对顺序但移除可见数字 / 字母序号；用户提供参考图时，以图像作为可见身份、结构、材质、颜色、标记和状态的主要规格，只补目标变化、布局、关键身份锚点与真实漂移风险。
+- Static Asset 的几何契约、呈现契约与用户指定状态 / 布局继续完整输出；Preview、视觉方向、九宫格固定提示词逐字节不变。
+- `deco-action-designer` 升级为 V3.5，包含 V3.1–V3.5 累积更新：Shot 内局部 Action 时间从 `0.0s` 起算；吸收 Sora 的平台无关提示知识并保持借用字段原义；全局字段与每个 Shot 双向校验；正向不变量与独立失败风险合并为唯一 `Constraints` 字段，不再输出单独 `Avoid`。
+- 清洁、修复、整理、损伤消除、前后对比与产品功效 Shot 必须在动作前写明可生成的场景初态，包括污物 / 损伤 / 乱序的类型、数量或密度、分布与位置；展示和收纳 Shot 写明干净、空置或整齐基线。
+- Action 的默认声音分支仍为无BGM加完整环境声 / SFX；用户或锁定材料明确提供音乐时准确保留音乐，明确要求绝对静音时不添加任何声音。
+- Helper V3.8、Screenplay Writer V1.4、Storyboard Designer V1.15 与 Visual Style Extractor V1.5 保持不变；Helper Route B 已验证兼容新 Action 正文内部的单一 `Constraints` 与 Subject / Action / Timing / Shot 四类资产执行载体。
+
+## 2026-07-20
+
+- `deco-helper` 升级为 V3.8，包含 V3.7–V3.8 累积更新：保留各专业产物的模板结构；兼容旧 V2 固定导演正文与新 V3 弹性正文；用语义充分性检查代替固定字段组合检查；Route B 可在 `Subject`、`Action`、`Timing/beats` 或 Shot 中绑定资产，无 Avoid 时省略空限制。
+- `deco-static-asset-designer` 升级为 V2.3：六类生产资产提示词保留编号、字段名、层级和字段顺序；Preview、视觉方向、九宫格固定提示词和资产几何定义保持不变。
+- `deco-action-designer` 升级为 V3.0：字段只在承担独立控制信息时出现；单一连续动作、精确单镜和多镜头分别使用 `Action`、`Action + Timing/beats` 或 Shot；删除剧情总述与 Shot 的重复层；继续提供完整无BGM声音设计。
+- `deco-visual-style-extractor` 升级为 V1.5，包含 V1.4–V1.5 累积更新：交付物使用匹配的结构化模板；按请求选择 Style Lookup、Analysis Card、Three-Stage Brief、Reusable JSON Prompt 或 Transfer Validation；模板内部省略空字段和无证据字段。
+- Screenplay Writer V1.4 与 Storyboard Designer V1.15 保持不变。Helper Route A、Static Asset 固定提示词、Storyboard canonical style、固定故事板提示词和固定分镜表提示词通过冻结面校验。
+- 六项 skill 通过结构校验、fresh-process 前向测试、Route A/B 兼容检查、live/repository 树一致性和公开发布安全检查。
+
+## 2026-07-19
+
+- `deco-helper` 升级为 V3.6：明确承担 Deco 系列的用法与跨模块制作经验层；新增“剧本初稿 → 故事板草稿测试 → 静态资产 → 资产支持的分镜表复核 → 动作设计 → 最终组装”推荐路线，同时保留用户独立调用任一专业功能的选择。
+- 场景多角度参考默认先使用九宫格；九格无法保持场景身份、拓扑、家具、设备或风格一致时，推荐降低信息密度并改用 `2×2` 四宫格。
+- `deco-storyboard-designer` 升级为 V1.15：按用户授权，只修改故事板和分镜表固定短任务的分图措辞，分别明确故事板之间、分镜表之间不要拼成一张图；canonical 故事板样式和其余模板内容不变。
+- `deco-action-designer` 升级为 V2.9，包含 V2.7–V2.9 累积更新：删除会诱发多余动作编排的 connected-motion-consequences / follow-through 规则；采用单一主动作、单一主导摄影行为和按需顺序节拍的动作经济；画面中需要逐字生成的文字统一使用中文双引号“……”，对白继续使用「……」。
+- Screenplay Writer V1.4、Static Asset Designer V2.2、Visual Style Extractor V1.3 保持不变；六项 skill 通过结构校验、边界扫描和公开发布安全检查。
+
 ## 2026-07-16
 
 - `deco-helper` 升级为 V3.5：身份提示词改用第一人称，Deco 以“我是 Deco”介绍自己，不再把内部第二人称指令原样展示给用户。

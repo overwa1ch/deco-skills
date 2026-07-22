@@ -28,6 +28,7 @@ Invite the user to add, remove, merge, split, or rename items.
 - **`Gxx`:** one coherent anonymous social, occupational, or crowd pool of 6—8 people without named identities.
 - **`CSxx`:** relative scale and body-proportion comparison among relevant `Cxx` characters.
 - **`Pxx`:** one recurring, signature, or mechanism-critical prop in its base design and baseline state.
+- **`Pxx-state`:** one approved base `Pxx` in one production-critical changed condition, such as damaged, wet, depleted, opened, or activated.
 - **`Sxx location_reference`:** one stable location identity shown through one reusable wide establishing view.
 
 Use these labels for traceability only. Natural asset names are valid.
@@ -36,7 +37,7 @@ Use these labels for traceability only. Natural asset names are valid.
 
 - Put stable face, bone structure, body proportion, baseline hair, wardrobe logic, shoes, accessories, and life traces in the base character.
 - Put one scene's makeup and styling changes, dirt, wetness, fatigue, injury, carried objects, expressions, key actions, and physical state in that scene's character-state asset.
-- Put recurring prop structure, scale, mechanism, material, markings, wear, and baseline state in `Pxx`. Put a story-critical damaged, wet, depleted, opened, activated, or otherwise changed condition in a separate prop-state asset when it must be locked visually.
+- Put recurring prop structure, scale, mechanism, material, markings, wear, and baseline state in `Pxx`. Put one story-critical damaged, wet, depleted, opened, activated, or otherwise changed condition in one `Pxx-state` when it must be locked visually.
 - Put stable spatial identity, structure, materials, and visible use traces in the location asset.
 - Put shared world facts in `regional_anchor` and shared treatment in `style_aesthetic`. Translate only their relevant visible effects into each prompt.
 
@@ -62,5 +63,5 @@ Do not describe details outside the selected view. Do not add action, scene dres
 - Do not merge one character's multiple scenes into one `Cxx-Lxx`, even when the makeup and styling are unchanged. Do not split one scene by individual actions; collect that scene's state progression and key actions on one sheet.
 - A production `CSxx` should use the relevant `Cxx` images. Use one shared image scale, one shared ground line, and confirmed relative proportions; do not derive a new character design from narrative importance.
 - Use one `Gxx` for one coherent group function. Split groups when occupation, class, age function, or social role requires a materially different makeup and styling system; do not crowd unrelated people onto one sheet.
-- Use one `Pxx` for one prop design. Keep its base asset free of story staging and alternate-state panels; discuss a separate prop-state asset when a changed condition is production-critical.
+- Use one `Pxx` for one prop design. Keep its base asset free of story staging and alternate-state panels. A production `Pxx-state` must use the approved base `Pxx` image, show one changed condition consistently across all views, and remain free of before/after comparison panels. Without the base image, name the missing input and stop; provide an identity-unresolved draft only when the user explicitly requests one.
 - Use one `Sxx location_reference` for one stable location. Describe only the spatial, architectural, furnishing, material, sign, light, and atmosphere facts that materially establish its identity and reuse.

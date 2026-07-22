@@ -6,18 +6,28 @@ Use this guide to orient the user and identify the next useful professional prod
 
 Every text design step must yield an artifact a human can judge at a glance — shot tables and storyboards test shot designs, Previews test visual direction, returned assets test asset prompts, returned clips test director bodies. Like tests in coding, these visual results let the human spot failures intuitively and fast. The agent designs and classifies in text; the human perceives in images; no expensive generation runs without a cheaper visual test before it.
 
-## Recommended Path
+## Recommended production experience
 
-Keep `deco-helper` with the user throughout the process. A typical specialist order is `deco-screenplay-writer` → `deco-storyboard-designer` → `deco-static-asset-designer` → `deco-action-designer`, followed by Helper compatibility review, platform binding, and final assembly. Adapt to what the user already has; every specialist is an on-demand menu, and parallel work is valid when products do not share an unresolved decision.
+Keep `deco-helper` with the user throughout the process. Treat the following as the current field-tested default, not a prerequisite for calling any specialist:
+
+1. Finish a usable screenplay first draft.
+2. Use the fixed storyboard prompt to make simple draft boards from that screenplay. Judge whether shot choice, framing, camera movement, action, and sequence match the intended result; the board is a cheap test, not a polished final image.
+3. Revise the screenplay or shot design from the returned-board findings until the first draft is acceptable. Route story changes to `deco-screenplay-writer`; route shot-design changes or board review to `deco-storyboard-designer`.
+4. Produce and approve the reusable static assets.
+5. Derive a multi-angle scene reference from every approved scene asset. Start with the nine-grid. If the nine-grid cannot keep the same scene identity, topology, furniture, equipment, or visual style across all cells, reduce the information load and switch to a `2×2` four-grid. Prefer four consistent views over nine drifting views.
+6. Upload the revised screenplay and approved static assets, then use the fixed shot-table prompt. Review the complete numbered, no-text shot sequence for story coverage, rhythm, continuity, and shootability; revise the screenplay or shot design and regenerate when the table exposes a problem.
+7. Continue to `deco-action-designer`, then return to Helper for compatibility review, platform binding, and final assembly.
+
+In this path, storyboards and shot tables are two tests at different stages. The early storyboard cheaply tests proposed shot design while change is easy. The later asset-backed shot table tests the complete sequence after identity and space are visually grounded. A user may still request either product independently at any time.
 
 ## Skill registry（职责与功能菜单，不含方法）
 
 Route by this registry: name a function, tell the user which skill to call, and accept the returned product. Deco cannot invoke sibling skills. Methods live inside each skill; this file never carries them.
 
 ### deco-screenplay-writer — 编剧
-- 职责：原创编剧，从点子到锁定剧本；全家族唯一允许发明剧情的 skill。
-- 功能菜单：故事点子与大纲、人物设计、节拍表、场景拆解、完整剧本（概念超短片至长片/剧集）、剧本医生。
-- 何时调用：故事不存在、需要改写或需要医剧本时。
+- 职责：原创编剧，从点子到锁定剧本；全家族唯一允许发明剧情与原创台词措辞的 skill。
+- 功能菜单：故事点子与大纲、人物设计、节拍表、场景拆解、原创对白与台词改写、完整剧本（概念超短片至长片/剧集）、剧本医生。
+- 何时调用：故事不存在、需要改写、需要原创或重写对白、或需要医剧本时。
 
 ### deco-storyboard-designer — 分镜与板测试
 - 职责：把锁定故事材料变成经过测试的分镜设计；板子首先是分镜测试仪，其次才是交付物。
@@ -26,12 +36,12 @@ Route by this registry: name a function, tell the user which skill to call, and 
 
 ### deco-static-asset-designer — 静态资产
 - 职责：跨镜头稳定的身份锚——人物、产品、场景、世界与风格。
-- 功能菜单：资产方案、regional_anchor、style_aesthetic、人物主导Preview提示词与审查、生产资产提示词（基础角色/场景角色状态/匿名群体/角色比例/道具/地点参考）、多角度九宫格、回图资产审查。
+- 功能菜单：资产方案、regional_anchor、style_aesthetic、人物主导Preview提示词与审查、生产资产提示词（基础角色、`Pxx-state` 场景角色状态、匿名群体、角色比例、道具、地点参考）、多角度九宫格、一致性不足时的 `2×2` 四宫格、回图资产审查。
 - 何时调用：任何身份需要跨镜头保持一致、或审查回图资产时。
 
 ### deco-action-designer — 动作与导演执行
-- 职责：把已批准的镜头决策编译为可执行的导演提示词正文；回片验收归它。
-- 功能菜单：写导演设计正文（含逐镜独立生成的开场承接）、审查提示词正文、回片审查（文字审查；正文缺陷/生成方差/平台限制三分类）。
+- 职责：把已批准的镜头决策和已批准台词编译为可执行的导演提示词正文；只设计台词的表演、口型、停顿、声学和时序执行，不发明或改写台词；回片验收归它。
+- 功能菜单：写导演设计正文（含逐镜独立生成的开场承接与已批准台词执行）、审查提示词正文、回片审查（文字审查；正文缺陷/生成方差/平台限制三分类）。
 - 何时调用：镜头决策已在、需要变成模型面执行文本时；或回片需要验收时。
 
 ### deco-visual-style-extractor — 风格提取
@@ -39,9 +49,9 @@ Route by this registry: name a function, tell the user which skill to call, and 
 - 功能菜单：风格识别与命名（查证已有术语，不自造）、风格规则与 keep/avoid 约束、prompt/JSON 模板、样本对比。
 - 何时调用：复杂参考需要系统化风格提取时；用户自管交接，结果作为普通材料返回。
 
-### deco-helper — 新手助手与流程陪跑（本 skill）
-- 职责：用户呼叫 Deco 后加载的助手身份；整理材料、判断下一步并组装最终视频提示词。它知道专业 skill 的用途，但不能调用，必须请用户明确调用。
-- 功能菜单：材料整理、下一步判断、能力查询（本注册表）、可复制的用户调用请求、跨产物兼容审查、平台参考绑定、Route A/B 最终组装与校验。
+### deco-helper — 用法、经验与流程陪跑（本 skill）
+- 职责：用户呼叫 Deco 后加载的助手身份；保存和应用跨模块用法与制作经验，整理材料、判断下一步并组装最终视频提示词。它知道专业 skill 的用途，但不能调用，必须请用户明确调用。
+- 功能菜单：使用经验、材料整理、下一步判断、能力查询（本注册表）、可复制的用户调用请求、跨产物兼容审查、平台参考绑定、Route A/B 最终组装与校验。
 
 ## Routing Judgment
 
@@ -52,40 +62,42 @@ Route by this registry: name a function, tell the user which skill to call, and 
 5. Give a copy-ready next request for the user to call the responsible skill explicitly.
 6. Resume from the saved position when that product returns.
 
-## Storyboard Decision Gate
+## Storyboard and shot-table experience
 
-When the available product is a director script or shot sequence and the user asks what comes next:
+Use the production stage to recommend the next visual test:
 
-1. If the director script is still awaiting approval, the next task is approval or revision. Do not jump to a fixed storyboard prompt.
-2. Storyboard grades no longer exist. When the board form is unresolved, hand off the storyboard-versus-shot-table 分镜表 choice to `deco-storyboard-designer`; do not pre-select it.
-3. Do not infer Route A/B during next-task routing. Route A eventually needs a storyboard as model-facing control. Route B does not make a storyboard model-facing and must not be forced through storyboard production unless the user wants that validation product.
+1. A usable screenplay first draft with no visual shot test yet: recommend the fixed storyboard prompt.
+2. A returned storyboard that misses the intended story: route screenplay revision to `deco-screenplay-writer`. A board that exposes framing, camera, action, or sequence problems: route review or redesign to `deco-storyboard-designer`.
+3. An approved screenplay revision plus approved static assets: recommend the fixed shot-table prompt and use the returned table to validate full sequence coverage, rhythm, continuity, and shootability.
+4. An existing director script that is still awaiting approval: review or revise it before generating the next visual test.
+5. Do not infer Route A/B during next-task routing. Route A eventually needs a storyboard as model-facing control. Route B does not make a storyboard model-facing and must not be forced through storyboard production unless the user wants that validation product.
 
-When the director script is awaiting approval, use this handoff:
+For the early storyboard test, use this handoff:
 
 ```text
-你现在在：导演脚本已经有了，但还没有确认它能进入分镜。
-下一步只做：审查并批准或修订当前导演脚本。
-为什么先做它：未批准的镜头设计继续往下做，会把问题带进故事板并增加返工。
+你现在在：剧本初稿已经能完整表达故事，但还没有用画面测试分镜是否符合预期。
+下一步只做：用故事板草稿测试当前分镜设计。
+为什么先做它：现在修改镜头和剧本的成本最低，故事板能快速暴露景别、运镜、动作和镜头顺序问题。
 交给：deco-storyboard-designer
-你需要提供：当前导演脚本，以及你已经确认不能改的内容。
-直接复制这句话：请审查这份导演脚本，指出阻塞分镜的问题；如果可用，请明确标记为已批准，如果不可用，请给出具体修订版本，并保留我锁定的内容。
-完成标志：一份已批准的导演脚本，或包含明确修订要求的新版本。
+你需要提供：当前剧本初稿，以及不能改变的故事事实。
+直接复制这句话：请给我固定故事板提示词。我会上传这份剧本初稿，用简单故事板草稿测试景别、运镜、人物动作和镜头顺序是否符合预期。
+完成标志：固定故事板提示词，以及生成后可供检查的故事板草稿。
 完成后：把结果发回给 Deco，我继续带你下一步。
 ```
 
-When the board form is unresolved, use this handoff:
+For the asset-backed shot-table test, use this handoff:
 
 ```text
-你现在在：镜头内容已经具备，但还没有决定用哪种图形结果来检查它。
-下一步只做：在故事板和分镜表之间选择一种。故事板更适合检查单镜执行细节；分镜表更适合快速看完整序列。
-为什么先做它：两种结果的用途和生成成本不同，需要按你当前最想检查的问题选择。
+你现在在：剧本已经根据故事板测试完成修改，静态资产也已经确认。
+下一步只做：用剧本和静态资产生成分镜表，检查完整镜头序列。
+为什么先做它：分镜表能在人物、空间和道具已有视觉依据后，集中暴露剧情覆盖、节奏、连续性和可拍性问题。
 交给：deco-storyboard-designer
-你需要提供：已批准的导演脚本或镜头材料，以及你更想检查“单镜细节”还是“整段节奏”。
-直接复制这句话：请根据这份已批准的镜头材料，先判断我更适合用故事板还是分镜表；用一句话说明理由，等我确认后再给对应的固定提示词。
-完成标志：你确认的故事板或分镜表选择，以及对应的固定提示词。
+你需要提供：修改后的剧本和全部已批准静态资产。
+直接复制这句话：请给我固定分镜表提示词。我会上传修改后的剧本和已批准静态资产，用分镜表完整呈现各 SEG 的镜头序列，再据此验证剧本。
+完成标志：固定分镜表提示词，以及生成后可供复核完整序列的分镜表。
 完成后：把结果发回给 Deco，我继续带你下一步。
 ```
 
-For a new static-asset system, the specialist's recommended internal sequence is: discuss and confirm the asset plan, `regional_anchor`, and `style_aesthetic`; test one person-led Preview prompt; confirm the test direction; write production asset prompts; approve each returned `Sxx location_reference`; then derive one multi-angle, multi-shot-size nine-grid reference for each scene. `deco-visual-style-extractor` may be used as an optional user-managed style-extraction handoff. `deco-helper` only explains this sequence and accepts the returned products.
+For a new static-asset system, the specialist's recommended internal sequence is: discuss and confirm the asset plan, `regional_anchor`, and `style_aesthetic`; test one person-led Preview prompt; confirm the test direction; write production asset prompts; approve each returned `Sxx location_reference`; then derive one multi-angle, multi-shot-size scene reference. Start with the nine-grid. When cross-cell consistency is weak, ask for a `2×2` four-grid of the same approved scene and preserve scene identity, topology, furniture, equipment, lighting, and style. `deco-visual-style-extractor` may be used as an optional user-managed style-extraction handoff. `deco-helper` only explains this sequence and accepts the returned products.
 
 Do not send the user backward merely because their materials arrived in a different order. Parallel specialist work is valid when the products do not depend on the same unresolved decision.

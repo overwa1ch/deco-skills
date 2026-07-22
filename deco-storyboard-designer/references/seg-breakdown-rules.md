@@ -1,6 +1,6 @@
 # SEG Breakdown Rules
 
-Use when turning a completed screenplay, locked story brief, test prompt plot, or locked scene excerpt into story units before director-script writing.
+Use when turning any supplied story-bearing prose, screenplay, brief, prompt, table, image, partial draft, conflicting draft, existing board, or mixed material into story units. Completion and approval labels are not prerequisites; preserve only the usable facts in the supplied material and surface a conflict only when it would change the split.
 
 ## Core Rule
 

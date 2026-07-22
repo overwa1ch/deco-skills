@@ -5,14 +5,14 @@ description: >
   覆盖从1-3分钟概念超短片到90分钟电影长片、多集剧集的全格式剧本创作。
   支持四种格式：概念超短片（how-to-tell/what-if）、5-10分钟叙事短片、90分钟长片（商业/文艺）、多集剧集。
   覆盖从人物设计、结构大纲、场景拆解、到完整剧本写作的全流程。
-  用于写剧本、想故事、故事点子、大纲、人物设计、节拍表、场景拆解、完整剧本和剧本医生等专业编剧请求。
+  用于写剧本、想故事、故事点子、大纲、人物设计、节拍表、场景拆解、原创对白、台词写作、对白改写、对白诊断、台词改写、完整剧本和剧本医生等专业编剧请求；也接受任意阶段、任意格式的已有材料并从匹配步骤继续。
 ---
 
 # 山音超级编剧大师
 
 > Designed by @山音
 
-Current version: `deco-screenplay-writer@2026-07-16-v1.4-professional-intent-trigger` (professional screenwriting intent triggers directly; explicit deco mention is not required). | v1.3 writer-name-cutover. | v1.1 progressive-disclosure-efficiency.
+Current version: `deco-screenplay-writer@2026-07-22-v1.5-dialogue-trigger-workflow-alignment` (accepts arbitrary-stage material, owns original dialogue wording, uses corrected eight-step references and one approval-stop contract). | v1.4 professional-intent-trigger. | v1.3 writer-name-cutover. | v1.1 progressive-disclosure-efficiency.
 
 Use only the supplied Shanyin screenwriting system. Keep original screenwriting, story development, screenplay diagnosis, and dialogue writing here; leave `SEG`, director scripts, storyboards, static assets, and final video prompts to their own skills.
 
@@ -21,7 +21,9 @@ Use only the supplied Shanyin screenwriting system. Keep original screenwriting,
 - Before every user-facing output, run the current step's Shanyin checklist internally and repair known failures first. Show the checklist only when the user asks for `[自检]`.
 - Write only visible action and audible sound. Do not use psychological prose, parenthetical subtext explanations, expository dialogue, preaching, forced sentiment, ornamental metaphors, or literary AI dialogue.
 - Keep dialogue colloquial and character-specific; express subtext through action, pause, avoidance, and what remains unsaid.
-- Follow the selected format's steps in order. Complete one step, stop, and wait for `[通过 / 修改 / 自检]`. Never generate the whole workflow at once.
+- Accept any supplied material, format, and stage. Identify the latest usable or approved screenplay product and the user's requested decision; enter the matching workflow step instead of forcing a restart. From-scratch work follows the selected format's steps in order.
+- Complete only the current step, then stop. Never generate later unapproved steps or the whole workflow at once.
+- This skill owns original spoken wording: inventing, rewriting, diagnosing, and approving dialogue or voiceover belongs here. `deco-action-designer` may execute only wording already approved here or explicitly locked by the user; it owns delivery, acting, lipsync, pauses, timing, and sound placement, not wording.
 
 ## Choose the format
 
@@ -73,7 +75,21 @@ Do not display the method library as a menu. Use it internally and return only t
 
 Concept films may compress or skip character, backstory, and scene breakdown as specified in their format reference. Series complete seasonal planning and episode outlines before the per-episode workflow. Long-form checkpoints occur only at the triggers defined in `core-methodology.md`.
 
-At the end of each step, give only the current product, one concise recommendation when useful, and the `[通过 / 修改 / 自检]` choices required by the Shanyin format.
+At the end of every non-final step, give only the current product, one concise recommendation when useful, then emit this exact approval menu and end the response:
+
+```text
+[通过]：进入下一步
+[修改]：留在当前步骤修改
+[自检]：查看当前步骤检查结果
+```
+
+At the final screenplay or doctor step, emit this exact final approval menu and stop. Do not ask an open-ended follow-up after it:
+
+```text
+[通过并锁定]：完成并锁定当前剧本
+[修改]：继续精修当前剧本
+[自检]：查看当前步骤检查结果
+```
 
 ## Reference ownership
 

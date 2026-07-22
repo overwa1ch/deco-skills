@@ -1,17 +1,17 @@
 # Scene Layout SVG Rules
 
-Use after a screenplay is locked/approved and before converting it into a processed director script.
+Use whenever the user requests spatial planning from supplied material with enough spatial facts. A complete, locked, or approved screenplay is not required.
 
 ## Purpose
 
-Create one simple topdown spatial check per screenplay scene before director-script camera and blocking decisions.
+Create one simple top-down spatial check per supplied scene or continuity space.
 
-## Gate
+## Routing
 
-- Ask first: `要不要先给每个场景画一张极简俯视布局 SVG？`
-- If the user agrees, create one SVG per screenplay scene.
-- After creating the SVGs, stop at `WAITING_FOR_SCENE_LAYOUT_SVG_REVIEW`.
-- Continue to `SEG`, visual optimization, or processed director script only after the user approves the SVGs or skips the gate.
+- For a direct one-product SVG request, create one SVG per supplied scene immediately. Do not ask whether the user wants SVGs, do not require an upstream product, and do not emit a named workflow gate. Stop after delivering the SVGs and a compact review request.
+- Inside an explicitly requested full-chain run that includes spatial planning, create the SVGs and stop at `WAITING_FOR_SCENE_LAYOUT_SVG_REVIEW`. Continue only after the user approves the SVGs or explicitly skips the review.
+- Inside a full-chain run that does not include spatial planning, skip this stage without asking and without opening a gate.
+- If the supplied material lacks the spatial facts needed for the requested SVG, name only the missing facts and stop. Do not produce a screenplay, `SEG`, or other upstream product uninvited.
 
 ## Output
 
@@ -52,21 +52,27 @@ For each scene, include:
 - The minimum furniture/partition layout needed to explain interaction.
 - Key fixed obstacles that affect later blocking.
 
-Leave dramatically important small props to the screenplay/director script when they do not affect spatial layout.
+Leave dramatically important small props to the supplied story material or director script when they do not affect spatial layout.
 
 ## Review Criteria
 
-Before stopping for review, check:
+Before delivery, check:
 
-- Scene count: one SVG exists for each screenplay scene.
+- Scene count: one SVG exists for each supplied scene or continuity space in scope.
 - Layout clarity: the viewer can tell where characters are and what major spatial areas exist.
 - Simplicity: no clutter, no small prop overload, no camera/shot/storyboard content.
-- Source fidelity: locations and character positions match the screenplay.
+- Source fidelity: locations and character positions match the supplied material.
 - Technical validity: each SVG parses as valid XML.
 
 ## Review Prompt
 
-After creating the SVGs, tell the user:
+For a direct one-product request, tell the user:
+
+```text
+场景俯视布局 SVG 已画完，请审查空间和人物位置是否对。
+```
+
+For an explicitly requested full-chain run, tell the user:
 
 ```text
 场景俯视布局 SVG 已画完，请先审查空间和人物位置是否对。通过后我再继续转 processed director script。

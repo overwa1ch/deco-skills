@@ -31,7 +31,7 @@ SEG02｜地点 / 时间
 ...
 ```
 
-Use provided source as authority. For locked briefs, test prompts, or excerpts, cite them directly and keep `SEG` plus director script complete. Run continuity validation internally before approval; show a compact PASS line or table only when requested. Load `handoff-to-storyboard.md` only when the user asks to enter storyboard work.
+Use provided source as authority. For locked briefs, test prompts, or excerpts, cite them directly and keep `SEG` plus director script complete. Run continuity validation internally before approval; show a compact PASS line or table only when requested. When the user asks to enter storyboard work, return to the storyboard design/review or fixed-prompt route in the skill entry; do not build a separate handoff package.
 
 Core principle: if unsure, write less. Use only visible, shootable anchors that control the frame, action, timing, sound, continuity, or handoff. Do not fill uncertainty with invented props, extra blocking, mood words, or explanatory coverage.
 
