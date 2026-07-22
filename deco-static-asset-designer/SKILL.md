@@ -1,14 +1,14 @@
 ---
 name: deco-static-asset-designer
-description: Plan, discuss, lock, prompt, revise, and review reusable static visual assets from any user-provided material or stage, including storyboards. Use for asset lists; Cxx, Cxx-Lxx, Gxx, CSxx, Pxx, and Sxx assets; regional_anchor; style_aesthetic; person-led Preview; production image prompts; multi-angle and multi-shot-size nine-grid scene references; and returned-asset review. Trigger from the professional static-asset or production-image intent; explicit deco mention is not required. Produce only static-asset work, not screenplays, storyboards, performance, dialogue, audio design, or final video prompts.
+description: Plan, discuss, lock, prompt, revise, and review reusable static visual assets from any user-provided material or stage, including storyboards. Use for asset lists; Cxx, Cxx-Lxx, Gxx, CSxx, Pxx, Pxx-state, and Sxx assets; regional_anchor; style_aesthetic; person-led Preview; production image prompts; multi-angle and multi-shot-size nine-grid references; 2x2 four-grid scene-reference fallbacks; and returned-asset review. Trigger from the professional static-asset or production-image intent; explicit deco mention is not required. Produce only static-asset work, not screenplays, storyboards, performance, dialogue, audio design, or final video prompts.
 ---
 
 # Deco Static Asset Designer
 
 Plan reusable static assets with the user, test their shared direction through Preview, then write or review asset prompts.
 
-Version: `deco-static-asset-designer@2026-07-21-v2.5-reference-first`
-Changelog: v2.5 — uploaded reference images are the primary visible specification; image-bound prompts describe only requested changes, layout, key identity anchors, and real drift risks. | v2.4 — production prompts retain field labels and field order without visible numeric prefixes. | v2.3 — production prompts retain the selected asset type's field structure and field labels instead of flattening them into one paragraph. | v2.2 — professional static-asset or production-image intent triggers directly; explicit deco mention is not required. | v2.1 — functions are an on-demand menu: deliver exactly the named product, no sequence pressure; full chain only on explicit request. | v2.0 four-layer restructure — shared rules single-sourced in contracts.md; one asset type = one self-contained types/ file (layout contract front-loaded, exact count slots, two-layer fixed-block contract, per-type review checklist and gold example).
+Version: `deco-static-asset-designer@2026-07-22-v2.6-prop-state-four-grid`
+Changelog: v2.6 — adds a reference-bound `Pxx-state` production contract and a separate 2x2 four-grid fallback path while preserving the existing Preview, visual-direction, and nine-grid prompt files verbatim. | v2.5 — uploaded reference images are the primary visible specification; image-bound prompts describe only requested changes, layout, key identity anchors, and real drift risks. | v2.4 — production prompts retain field labels and field order without visible numeric prefixes. | v2.3 — production prompts retain the selected asset type's field structure and field labels instead of flattening them into one paragraph. | v2.2 — professional static-asset or production-image intent triggers directly; explicit deco mention is not required. | v2.1 — functions are an on-demand menu: deliver exactly the named product, no sequence pressure; full chain only on explicit request. | v2.0 four-layer restructure — shared rules single-sourced in contracts.md; one asset type = one self-contained types/ file (layout contract front-loaded, exact count slots, two-layer fixed-block contract, per-type review checklist and gold example).
 
 ## Layers (load per stage, never all at once)
 
@@ -56,7 +56,9 @@ Read [review-protocol.md](references/review-protocol.md), then the asset's types
 
 ### 6. Produce multi-angle scene references
 
-After an `Sxx location_reference` image is approved, use [multi-angle.md](types/multi-angle.md) once per scene with that image as the reference. Review returned nine-grids with the checklist in the same file.
+After an `Sxx location_reference` image is approved, use [multi-angle.md](types/multi-angle.md) once per scene with that image as the reference. This nine-grid remains the default.
+
+Use [multi-angle-2x2.md](types/multi-angle-2x2.md) when the user explicitly requests a 2x2 four-grid, or after review shows that a returned nine-grid cannot preserve the same scene identity, topology, furniture, equipment, lighting, or style across cells. During review, return the smallest correction and verdict; do not append the fallback prompt unless the user requests that product.
 
 ## Output
 
