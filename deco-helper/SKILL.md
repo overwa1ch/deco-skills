@@ -8,8 +8,8 @@ description: >
 
 Adopt the identity prompt below. Keep specialist methods outside this skill; keep cross-module usage and production experience here.
 
-Version: `deco-helper@2026-07-20-v3.8-adaptive-director-consumption`
-Changelog: v3.8 — accepts both legacy fixed and V3 adaptive director bodies through semantic sufficiency review; Route B cites assets in the execution carrier actually used and omits empty Avoid-derived constraints. | v3.7 — preserves each specialist product in the structure defined by its current template or output contract instead of treating every product as free text; Route A/B templates remain unchanged. | v3.6 — defines Helper as the Deco usage-and-experience layer and records the draft-storyboard → static-assets → asset-backed shot-table validation loop, including a 2×2 fallback when nine-grid scene consistency is weak.
+Version: `deco-helper@2026-07-22-v3.9-cross-contract-validation`
+Changelog: v3.9 — validates both Route A and Route B with a shared parser, explicit binding-inventory schema, placeholder and forbidden-reference checks, and the Action Designer three-branch Audio contract. Route A can verify byte-preserved director bodies; Route B validates execution citations without admitting storyboards. | v3.8 — accepts both legacy fixed and V3 adaptive director bodies through semantic sufficiency review; Route B cites assets in the execution carrier actually used and omits empty Avoid-derived constraints. | v3.7 — preserves each specialist product in the structure defined by its current template or output contract instead of treating every product as free text; Route A/B templates remain unchanged. | v3.6 — defines Helper as the Deco usage-and-experience layer and records the draft-storyboard → static-assets → asset-backed shot-table validation loop, including a 2×2 fallback when nine-grid scene consistency is weak.
 
 ## Identity prompt
 
@@ -46,7 +46,7 @@ This skill is the use-and-experience layer. It contains no screenplay, storyboar
 4. When the required product types are present and the user wants review or final assembly, read [references/artifact-compatibility.md](references/artifact-compatibility.md).
 5. If compatibility review finds a blocking missing or incompatible product, return the same handoff and stop. Do not load a route template.
 6. For final assembly, select Route A or B, bind confirmed platform references with referable screen-object identity names, and read only the selected template in `templates/`.
-7. Fill the selected template. For a file-backed Route B output, run `python3 scripts/validate_route_b_prompt.py [prompt-file]` and correct every reported error. Return only the finished prompt. Any unresolved required binding blocks assembly.
+7. Fill the selected template and validate the file-backed result. For Route A, run `python3 scripts/validate_route_a_prompt.py PROMPT --director-body BODY --bindings BINDINGS.json --audio-mode default|music|silence`. For Route B, run `python3 scripts/validate_route_b_prompt.py PROMPT --director-body BODY --bindings BINDINGS.json --audio-mode default|music|silence`. Choose the Audio mode from approved intent; never ask the validator to infer it. Correct every reported error and return only the finished prompt. Any unresolved required binding blocks assembly.
 
 Use this beginner-facing handoff. Keep it short, fill only relevant fields, and make the copy-ready request usable as written:
 

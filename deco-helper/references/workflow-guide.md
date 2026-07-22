@@ -25,9 +25,9 @@ In this path, storyboards and shot tables are two tests at different stages. The
 Route by this registry: name a function, tell the user which skill to call, and accept the returned product. Deco cannot invoke sibling skills. Methods live inside each skill; this file never carries them.
 
 ### deco-screenplay-writer — 编剧
-- 职责：原创编剧，从点子到锁定剧本；全家族唯一允许发明剧情的 skill。
-- 功能菜单：故事点子与大纲、人物设计、节拍表、场景拆解、完整剧本（概念超短片至长片/剧集）、剧本医生。
-- 何时调用：故事不存在、需要改写或需要医剧本时。
+- 职责：原创编剧，从点子到锁定剧本；全家族唯一允许发明剧情与原创台词措辞的 skill。
+- 功能菜单：故事点子与大纲、人物设计、节拍表、场景拆解、原创对白与台词改写、完整剧本（概念超短片至长片/剧集）、剧本医生。
+- 何时调用：故事不存在、需要改写、需要原创或重写对白、或需要医剧本时。
 
 ### deco-storyboard-designer — 分镜与板测试
 - 职责：把锁定故事材料变成经过测试的分镜设计；板子首先是分镜测试仪，其次才是交付物。
@@ -36,12 +36,12 @@ Route by this registry: name a function, tell the user which skill to call, and 
 
 ### deco-static-asset-designer — 静态资产
 - 职责：跨镜头稳定的身份锚——人物、产品、场景、世界与风格。
-- 功能菜单：资产方案、regional_anchor、style_aesthetic、人物主导Preview提示词与审查、生产资产提示词（基础角色/场景角色状态/匿名群体/角色比例/道具/地点参考）、多角度九宫格、回图资产审查。
+- 功能菜单：资产方案、regional_anchor、style_aesthetic、人物主导Preview提示词与审查、生产资产提示词（基础角色、`Pxx-state` 场景角色状态、匿名群体、角色比例、道具、地点参考）、多角度九宫格、一致性不足时的 `2×2` 四宫格、回图资产审查。
 - 何时调用：任何身份需要跨镜头保持一致、或审查回图资产时。
 
 ### deco-action-designer — 动作与导演执行
-- 职责：把已批准的镜头决策编译为可执行的导演提示词正文；回片验收归它。
-- 功能菜单：写导演设计正文（含逐镜独立生成的开场承接）、审查提示词正文、回片审查（文字审查；正文缺陷/生成方差/平台限制三分类）。
+- 职责：把已批准的镜头决策和已批准台词编译为可执行的导演提示词正文；只设计台词的表演、口型、停顿、声学和时序执行，不发明或改写台词；回片验收归它。
+- 功能菜单：写导演设计正文（含逐镜独立生成的开场承接与已批准台词执行）、审查提示词正文、回片审查（文字审查；正文缺陷/生成方差/平台限制三分类）。
 - 何时调用：镜头决策已在、需要变成模型面执行文本时；或回片需要验收时。
 
 ### deco-visual-style-extractor — 风格提取
