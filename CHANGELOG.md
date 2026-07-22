@@ -2,6 +2,12 @@
 
 ## 2026-07-22
 
+- 六项 skill 完成协调健康修复：Helper V3.9、Screenplay V1.5、Storyboard V1.16、Static Asset V2.6、Action V3.8 与 Visual Style V1.6。
+- Helper 对齐 Action 的无BGM、明确音乐、绝对静音三分支，新增 Route A validator 并补全 Route B 的正文保护、故事板排除、占位符、Audio 和资产清单检查；Route A/B 固定模板逐字节不变。
+- Screenplay 统一八步名称与编号，允许已有材料直接进入对应产品，明确拥有原创 / 改写对白，并把审批菜单收口为单一来源。Action 只负责已批准台词的表演、口型、停顿、声音和镜头执行。
+- Storyboard 接受任意阶段与混合材料，区分单产品 / full-chain Scene SVG 路由，删除失效 handoff 与冗余 READY Gate，并统一固定故事板 / 分镜表的 `SEGXX` 运行时替换；canonical style 和两个固定模板未改。
+- Static Asset 新增 `Pxx-state` 与 `2×2` 四宫格场景 fallback；现有 Preview、视觉方向和九宫格固定提示词未改。Visual Style 收紧为 style layer，Established style 必须有来源与匹配强度，Analysis Card 只保留一个 Evidence strength owner。
+- 新增无第三方依赖的公共健康检查、匿名合同 fixtures 与 `validate-deco-skills` GitHub Actions status check。
 - `deco-action-designer` 升级为 V3.7，包含 V3.6–V3.7 累积更新：多镜头或既有镜头权威仍使用全片时间的 `Shot N [start-end s]` 标题；Shot 内动作改为从 `0.0s` 起算的直接局部时间码行，统一格式为 `0.2-0.6s: 动作描述`。
 - Shot 内不再输出 `Action:`、`beat N`、圆括号、方括号或项目符号包装；无阶段变化的镜头使用一条覆盖完整镜长的局部时间码，有阶段变化时使用最少量的连续时间码行。
 - Action V3.5 的弹性字段选择、Sora 字段原义、全局与 Shot 双向一致性、完整自适应 Audio、单一 `Constraints`、首帧场景状态和 Reference / Route 禁止项全部保留。

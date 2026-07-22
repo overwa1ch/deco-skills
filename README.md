@@ -6,12 +6,12 @@ Deco 是一套面向 AI 视频生产的模块化 Codex skills。用户说“deco
 
 | Skill | 当前版本 | 职责 |
 | --- | --- | --- |
-| `deco-helper` | V3.8 | Deco 用法与经验层；整理材料、判断下一步、检查跨模块兼容性并组装最终视频提示词。 |
-| `deco-screenplay-writer` | V1.4 | 故事点子、人物设计、结构大纲、节拍表、场景拆解、完整剧本与剧本诊断。 |
-| `deco-storyboard-designer` | V1.15 | SEG 拆分、场景布局、导演脚本、分镜设计、镜头表和分镜审查。 |
-| `deco-static-asset-designer` | V2.5 | 静态资产规划、Preview、参考图优先的结构化生产提示词、修订与成图审查。 |
-| `deco-action-designer` | V3.7 | 按任务选择动作、表演、摄影、光影、声音、Timing 或 Shot 等执行字段，并审查生成视频。 |
-| `deco-visual-style-extractor` | V1.5 | 从参考材料中检索既有风格，并按请求交付最小可复用视觉风格产物。 |
+| `deco-helper` | V3.9 | Deco 用法与经验层；整理材料、判断下一步、验证三种 Audio 分支与 Route A/B 合同，并组装最终视频提示词。 |
+| `deco-screenplay-writer` | V1.5 | 故事点子、人物设计、结构大纲、场景拆解、原创对白、完整剧本与剧本诊断。 |
+| `deco-storyboard-designer` | V1.16 | 任意阶段材料的 SEG、场景布局、导演脚本、分镜设计、固定提示词和 returned-board 审查。 |
+| `deco-static-asset-designer` | V2.6 | 静态资产规划、Preview、Pxx-state、九宫格 / 2×2 场景参考、生产提示词与成图审查。 |
+| `deco-action-designer` | V3.8 | 按任务设计动作、摄影、光影、声音和已批准台词的表演执行，并审查生成视频。 |
+| `deco-visual-style-extractor` | V1.6 | 检索既有风格并提取有证据的 style layer，不代做资产、镜头、动作或最终提示词。 |
 
 ## 安装
 
@@ -29,9 +29,11 @@ cp -R deco-skills/deco-* ~/.codex/skills/
 
 - 专业产物保留所属 skill 的模板或输出合同结构。
 - `deco-static-asset-designer` 以用户提供的参考图承载已清楚可见的规格；正式提示词保留字段名和相对顺序，不显示数字或字母序号，只补目标变化、布局、身份锚点与真实漂移风险。
+- `deco-static-asset-designer` 为一个已批准基础 Pxx 的单一关键改变态提供 `Pxx-state`；场景覆盖默认九宫格，九格一致性不足或用户明确要求时可改用 `2×2` 四宫格。
 - `deco-action-designer` 只写当前任务中承担独立控制作用的字段；连续动作使用 `Action`，精确单镜使用 `Action + Timing/beats`，多镜头或已有镜头权威使用 Shot。Shot 保留全片时间标题，内部直接使用从 `0.0s` 起算的 `0.2-0.6s: 动作描述` 时间码行，不添加 `Action:` 或 `beat N` 包装；正向不变量与独立失败风险统一进入一个 `Constraints` 字段。
-- `deco-visual-style-extractor` 按请求选择 Style Lookup、Analysis Card、Three-Stage Brief、Reusable JSON Prompt 或 Transfer Validation，并省略无证据、无当前用途的字段。
-- `deco-helper` 同时消费旧版固定导演正文和新版弹性导演正文；Route A 保留外层 `Reference List`，Route B 保留外层 `Asset List / Prompt / Constraints`。
+- 原创或改写对白属于 `deco-screenplay-writer`；`deco-action-designer` 只保留已批准措辞并设计其表演、口型、停顿、声音与镜头内执行。
+- `deco-visual-style-extractor` 按请求选择 Style Lookup、Analysis Card、Three-Stage Brief、Reusable JSON Prompt 或 Transfer Validation；`subject`、`scene`、`camera` 只接受用户已有值或复用占位符。
+- `deco-helper` 同时消费旧版固定导演正文和新版弹性导演正文；Route A 保留外层 `Reference List`，Route B 保留外层 `Asset List / Prompt / Constraints`，两条路线均可用确定性脚本验证。
 - 未明确提供音乐时，每段导演正文默认使用无BGM的完整环境声与 SFX；明确提供音乐或要求绝对静音时按该声音状态执行。导演正文不写 `Reference:` 或平台绑定。
 
 ## 新手使用方式
@@ -48,6 +50,16 @@ cp -R deco-skills/deco-* ~/.codex/skills/
 6. `deco-helper` 检查产物兼容性并完成最终组装。
 
 `deco-helper` 从开始到结束持续陪同；上面的顺序是当前经验建议，不是专业 skill 的调用前提。`deco-visual-style-extractor` 可在任何需要锁定或复核视觉风格的阶段按需使用。实际顺序以当前材料和交付目标为准。
+
+## 健康检查
+
+仓库的 `validate-deco-skills` GitHub Actions job 会检查六项 frontmatter、引用完整性、跨模块合同、匿名 Route fixtures、公开安全和冻结提示词 hash。也可在本地运行：
+
+```bash
+python scripts/validate_deco_skills.py --skills-root .
+python -m unittest discover -s deco-helper/tests -p 'test_*.py' -v
+python -m unittest discover -s tests -p 'test_*.py' -v
+```
 
 ## 仓库迁移
 

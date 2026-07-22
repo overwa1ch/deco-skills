@@ -1,0 +1,21 @@
+{
+  "schema_version": "deco-reference-bindings/v1",
+  "bindings": [
+    {
+      "segment": "SEG01",
+      "identity": "红色保温壶",
+      "handle": "@image1",
+      "kind": "static",
+      "role": "Pxx 道具身份",
+      "source_aliases": []
+    },
+    {
+      "segment": "SEG01",
+      "identity": "SEG01镜头板",
+      "handle": "@image2",
+      "kind": "storyboard",
+      "role": "故事板",
+      "source_aliases": []
+    }
+  ]
+}
