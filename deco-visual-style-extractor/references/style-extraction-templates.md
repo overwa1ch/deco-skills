@@ -4,6 +4,8 @@ Select one smallest matching artifact. Within it, preserve the exact field label
 
 Keep one fact in one owning field. Use `Uncertainties` only when evidence limits materially affect the answer. Return only the selected artifact without a preface or appendix; do not flatten it into free prose.
 
+For every canonical or supporting established term that affects the result, give a direct source URL or a precise offline source note, explain its direct relevance, and state match strength. When lookup is unavailable or sources are insufficient, do not confirm the term from memory. Use `Canonical match: none confirmed` in `Style Lookup Result`, or the matching canonical-status field in another selected artifact, and disclose the evidence limit in `Uncertainties`.
+
 ## Style Lookup Result
 
 Use for a style-name, classification, or established-term query without full system extraction.
@@ -17,8 +19,8 @@ Supporting established terms:
 Medium or genre:
 Descriptive modifiers, not style names:
 Sources:
-- [Source and direct relevance.]
-Match strength:
+- [Established term — direct source URL or precise offline source note — direct relevance — match strength.]
+Match strength: [Overall classification strength; each term keeps its own strength in Sources.]
 Rejected near-matches:
 Working description (non-canonical):
 Uncertainties:
@@ -55,7 +57,6 @@ Stage 1 - Constraint extraction:
 Stage 2 - Sample purification:
 - Cross-sample commonalities:
 - Accidental details removed:
-- Evidence strength:
 
 Stage 3 - Style system:
 - Space / composition:
@@ -79,7 +80,7 @@ Evidence strength:
 Uncertainties:
 ```
 
-Use either `Style name` or `Working description (non-canonical)` according to the lookup result. Do not repeat Keep/Avoid rules inside the Stage 3 blocks.
+Use either `Style name` or `Working description (non-canonical)` according to the lookup result. The top-level `Evidence strength` block is the only owner of evidence confidence. Do not repeat Keep/Avoid rules inside the Stage 3 blocks.
 
 ## Three-Stage Brief
 
@@ -105,7 +106,7 @@ If only one stage has substantive content, output only that stage. If one sample
 
 ## Reusable JSON Prompt
 
-Use for a reusable generation template. Keep valid JSON and preserve the relative key order below, but omit every irrelevant key and empty container. Placeholder values are allowed only when the user requests a reusable template whose purpose is to be filled later.
+Use for a reusable style-layer generation template. Keep valid JSON and preserve the relative key order below, but omit every irrelevant key and empty container. Placeholder values are allowed only when the user requests a reusable template whose purpose is to be filled later. Copy `subject`, `scene`, and `camera` from user-provided material or leave fillable placeholders; do not author missing story action, production design, shot design, camera setup, or camera movement. Repeated style evidence may populate `composition` and style-rule fields, but it does not authorize filling those three protected keys.
 
 ```json
 {
@@ -114,13 +115,20 @@ Use for a reusable generation template. Keep valid JSON and preserve the relativ
     "parent_style": "<documented style or movement>",
     "supporting_styles": ["<documented style, genre, or aesthetic>"],
     "descriptive_modifiers": ["<visible trait, not a claimed style name>"],
-    "sources": ["<reference URL or source note>"],
-    "match_strength": "<strong | moderate | weak>"
+    "sources": [
+      {
+        "term": "<canonical or supporting established term>",
+        "source": "<direct source URL or precise offline source note>",
+        "relevance": "<direct relevance to the supplied evidence>",
+        "match_strength": "<strong | moderate | weak>"
+      }
+    ],
+    "match_strength": "<overall classification strength: strong | moderate | weak>"
   },
-  "subject": "<new subject and action>",
-  "scene": "<setting and concrete context>",
+  "subject": "<user-supplied subject and action, or reusable placeholder>",
+  "scene": "<user-supplied setting, or reusable placeholder>",
   "composition": "<subject position, viewing order, density, negative space>",
-  "camera": "<shot size, focal length, angle, movement if video>",
+  "camera": "<user-supplied camera value, or reusable placeholder>",
   "lighting": {
     "source": "<where light comes from>",
     "target": "<what it illuminates>",
@@ -136,7 +144,7 @@ Use for a reusable generation template. Keep valid JSON and preserve the relativ
     "avoid": ["<excluded trait or model default>"]
   },
   "rendering": "<finish, texture, fidelity, sharpness>",
-  "constraints": "<quality boundaries not already owned above>",
+  "constraints": "<style and quality boundaries not already owned above>",
   "uncertainties": ["<material evidence limit>"]
 }
 ```
