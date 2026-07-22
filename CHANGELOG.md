@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-07-22
+
+- `deco-action-designer` 升级为 V3.7，包含 V3.6–V3.7 累积更新：多镜头或既有镜头权威仍使用全片时间的 `Shot N [start-end s]` 标题；Shot 内动作改为从 `0.0s` 起算的直接局部时间码行，统一格式为 `0.2-0.6s: 动作描述`。
+- Shot 内不再输出 `Action:`、`beat N`、圆括号、方括号或项目符号包装；无阶段变化的镜头使用一条覆盖完整镜长的局部时间码，有阶段变化时使用最少量的连续时间码行。
+- Action V3.5 的弹性字段选择、Sora 字段原义、全局与 Shot 双向一致性、完整自适应 Audio、单一 `Constraints`、首帧场景状态和 Reference / Route 禁止项全部保留。
+- Helper Route B 已验证可在 Shot 执行载体中消费直接局部时间码；Helper V3.8、Screenplay Writer V1.4、Storyboard Designer V1.15、Static Asset Designer V2.5 与 Visual Style Extractor V1.5 保持不变，冻结提示词表面逐字节不变。
+
 ## 2026-07-21
 
 - `deco-static-asset-designer` 升级为 V2.5，包含 V2.4–V2.5 累积更新：正式资产提示词保留字段名与相对顺序但移除可见数字 / 字母序号；用户提供参考图时，以图像作为可见身份、结构、材质、颜色、标记和状态的主要规格，只补目标变化、布局、关键身份锚点与真实漂移风险。

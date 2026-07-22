@@ -8,7 +8,7 @@ Review text-first: ask the user to watch and report observations. Do not inspect
 
 Choose the checklist unit from the body actually delivered:
 
-- Shot blocks present: review Shot by Shot; when a Shot contains local Action beats, review those beats on that Shot's local timeline, then check declared cross-shot invariants.
+- Shot blocks present: review Shot by Shot; review each direct Shot-local timecode line on that Shot's local timeline, then check declared cross-shot invariants.
 - `Timing/beats` present: review beat by beat, then check the landing.
 - `Action` only: review the complete continuous action from initial state through landing.
 
@@ -16,7 +16,7 @@ Accept partial evidence and state what remains unverified. Do not mark an omitte
 
 ## Checks to apply when declared or materially required
 
-1. **Duration and order:** declared duration and beats fit; Shot-local beats reset to `0.0s`, stay sequential, and end at the Shot duration; cause precedes response; the landing registers.
+1. **Duration and order:** declared duration and beats fit; direct Shot-local timecode lines reset to `0.0s`, stay sequential, and end at the Shot duration; cause precedes response; the landing registers.
 2. **Subject and scene:** visible subjects, setting, spatial facts, and frame-zero scene condition match the body; where effect depends on a before-state, the contamination, damage, or disorder type, amount or density, distribution, and location are readable before action begins.
 3. **Action fidelity:** the primary process, useful response, and landing occur as written; no unsupported choreography appears.
 4. **Continuity:** when declared or required across cuts/states, identity, wardrobe, props, positions, and states remain invariant.

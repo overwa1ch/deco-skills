@@ -23,11 +23,11 @@ Keep the chain continuous across the whole requested scope. Each unit needs only
 
 ## 3. Choose And Keep The Execution Unit Executable
 
-- Use one top-level `Action` for a continuous process, add top-level `Timing/beats` only when one single shot or continuous take needs ordered timing, and use Shot blocks only for multiple or authoritative shots. Inside each Shot block, write one Shot-local `Action:` line; that local line is part of the Shot carrier and never creates a second top-level carrier. Do not turn a single continuous take into `Shot 1` merely to satisfy a format.
+- Use one top-level `Action` for a continuous process, add top-level `Timing/beats` only when one single shot or continuous take needs ordered timing, and use Shot blocks only for multiple or authoritative shots. Inside each Shot block, write direct local timecode lines; those lines are part of the Shot carrier and never create a second top-level carrier. Do not turn a single continuous take into `Shot 1` merely to satisfy a format.
 - Keep one grammatically clear main subject and one main action per execution unit. Treat secondary people, props, background activity, and routine motion as subordinate unless they change the story outcome.
 - Preserve every approved action, but identify one primary action and one dominant camera behavior for each execution unit unless the shot authority explicitly locks more. Keep supplied continuous background processes low-weight instead of turning them into additional choreography.
 - Use plain visible nouns and verbs. Name relevant materials such as metal, fabric, glass, leather, or clay when they affect appearance or physics. State only the path, direction, timing, or landing needed to make the approved action unambiguous; do not infer gait mechanics, force, weight transfer, micro-gestures, or secondary body reactions.
-- Use short beats such as `(0-2s)`, `(2-4s)`, and `(4-6s)` when timing matters.
+- Use direct local timecode lines such as `0-2s:`, `2-4s:`, and `4-6s:` when timing matters inside a Shot. Never prefix them with `beat N` or wrap them in parentheses. Always place `s` immediately before the ASCII colon.
 - Keep actions sequential, not simultaneous.
 - For a 4-second clip, limit the action to one or two beats. For other durations, use the fewest source-supported beats that make the sequence executable; continuous background state does not create another beat.
 - Describe actions as counts or steps when possible and supported by the supplied material or exact synchronization. Never invent a count to make ordinary movement sound more precise.
@@ -70,15 +70,15 @@ In group scenes, give the primary action full clarity and compress the group int
 - Propose new wording only when the user requests dialogue writing or revision. Mark proposed lines clearly until approved.
 - Preserve supported voiceover, off-screen speech, phone/radio speech, overlap, and silence when the task includes them; report technical conflicts instead of silently converting the mode.
 - Keep exact visible text short when the material allows it. Preserve its exact wording and specify its screen, surface, or frame position; use a stable, legible camera state when authority leaves that decision open.
-- Keep dialogue in its dedicated field or owning beat, label speakers consistently, and use only the number of short lines that can fit with action, breath, and response.
+- Keep dialogue in its dedicated field or owning timecode line, label speakers consistently, and use only the number of short lines that can fit with action, breath, and response.
 
 ## 7. Use Timing Without False Precision
 
 When reliable timing exists and materially affects execution:
 
 - keep ranges ordered, continuous when the task requires continuity, and non-overlapping unless overlap is intentional;
-- keep every Shot header on the full-video timeline, but reset its Shot-local `Action` beats to `0.0s`; end the final local beat at that Shot's duration and never mix global timestamps into the local beat sequence;
-- use whole seconds or at most one decimal when needed, with ranges such as `(0-2s)`, `(2-4s)`, or `(1.1-2.5s)`; do not carry frame or millisecond precision into the director body unless the user explicitly requires it;
+- keep every Shot header on the full-video timeline, but reset its direct Shot-local timecode lines to `0.0s`; end the final local line at that Shot's duration and never mix global timestamps into the local sequence;
+- use whole seconds or at most one decimal when needed, with local lines such as `0-2s:`, `2-4s:`, or `1.1-2.5s:`; do not carry frame or millisecond precision into the director body unless the user explicitly requires it;
 - budget spoken words, breath, action preparation, contact, reaction, and settling time;
 - place the cause before the response and allow the response to register;
 - shorten the action or flag a duration conflict when the beat cannot fit.
@@ -104,7 +104,7 @@ Keep the shared sound state concise; move a sound into its beat or Shot only whe
 ## 9. Anchor Frame Zero And Assign Reference Roles
 
 - Treat a supplied input image as the visible state already true at `0.0s`: it can lock composition, identity, product state, and set dressing. Describe only what happens after that frame; do not make `Action` rebuild or restage the image.
-- Put frame-zero facts in the applicable global fields or Shot setup. Put every subsequent change, including entry, reveal, movement, transformation, or camera departure, in the owning `Action` or beat.
+- Put frame-zero facts in the applicable global fields or Shot setup. Put every subsequent change, including entry, reveal, movement, transformation, or camera departure, in the owning top-level `Action`, `Timing/beats`, or direct Shot-local timecode line.
 - For cleaning, restoration, organization, damage-removal, before/after, or product-efficacy work, make the starting condition renderable before the action: name the dirt, debris, damage, or disorder; its amount or density; its distribution pattern; and the surface, zone, edge, groove, or container where it sits. `脏乱`, `很多灰尘`, or `有碎屑` alone is too vague when the result depends on the starting state. For display or storage Shots, state the clean, empty, or orderly baseline and any intentionally present objects. When shot authority leaves this condition open, choose the smallest visible setup that makes the intended effect legible; do not exaggerate it into an unsupported product claim.
 - If a necessary frame-zero anchor is missing, state the required composition, identity, or set-dressing anchor and route it to the static-asset workflow. Do not generate, redesign, or approve the asset inside Action Designer.
 

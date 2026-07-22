@@ -37,7 +37,7 @@ Dialogue:
 Constraints:
 ```
 
-When Shot blocks are the top-level execution carrier, place them where top-level `Action` and `Timing/beats` would appear: after any used `Physics` field and before `Audio`. Each Shot then owns exactly one Shot-local `Action:` line. A local `Action:` belongs to the Shot block and does not violate the one-carrier rule. Do not add a replacement summary paragraph.
+When Shot blocks are the top-level execution carrier, place them where top-level `Action` and `Timing/beats` would appear: after any used `Physics` field and before `Audio`. Each Shot then owns one or more direct local timecode lines. Those lines belong to the Shot block and do not violate the one-carrier rule. Do not add a replacement summary paragraph.
 
 The body starts directly at its first populated field. Use short labeled lines and omit irrelevant sections. Map any useful prose-scene information into the existing fields; do not add an unlabeled prose template, title, preface, `风格前缀：`, `Reference:`, platform handle, `Mixed N`, upload order, Asset List, Reference List, or Route heading.
 
@@ -61,16 +61,16 @@ Use one or more `**Shot N [start-end s]**` blocks only when:
 
 Preserve authoritative shot count, order, framing, movement, action, space, props, dialogue, and outcomes. When shot count is genuinely open, use the fewest shots that execute the supplied process. With Shot blocks, omit global `Action:`, global `Timing/beats:`, and any unlabeled execution-summary paragraph.
 
-Give every Shot exactly one local action form:
+Give every Shot one direct local timeline:
 
-- one continuous action: `Action: [one clear action and landing]`; or
-- short beats: `Action: beat 1 (0-2s) [action]; beat 2 (2-4s) [action]`.
+- one continuous action: one range spanning the Shot duration, such as `0.0-4.0s: [one clear action and landing]`; or
+- staged action: multiple sequential lines such as `0.0-2.0s: [first action]` and `2.0-4.0s: [second action and landing]`.
 
-Do not add a nested `Timing/beats:` label inside a Shot and do not combine the continuous and beat forms. The Shot-local `Action:` line owns every ordered verb and landing for that Shot; any preceding Shot text may establish only the visible setup, framing, camera, space, or initial state.
+Do not add `Action:`, `Timing/beats:`, `beat N`, bullets, brackets, or parentheses to Shot-local timecode lines. Each range stands at the start of its own line, includes `s` immediately after the end time, and ends with an ASCII colon. The local timeline owns every ordered verb and landing for that Shot; any preceding Shot text may establish only the visible setup, framing, camera, space, or initial state.
 
-Shot headers use the full-video timeline. Timed Shot-local beats reset to `0.0s`, stay sequential and non-overlapping, and end at the Shot duration. Never repeat the header's global timestamps inside the local beats. Use whole seconds or at most one decimal when needed; do not import frame or millisecond precision unless the user explicitly requires it.
+Shot headers use the full-video timeline and retain the `s` suffix inside ASCII square brackets. Direct Shot-local timecode lines reset to `0.0s`, stay sequential and non-overlapping, and end at the Shot duration. Never repeat the header's global timestamps inside the local sequence. Use whole seconds or at most one decimal when needed; do not import frame or millisecond precision unless the user explicitly requires it.
 
-Apply the short-beat and multi-Shot action economy defined in `craft.md`. A Shot with no meaningful stage change stays a single continuous `Action:`.
+Apply the short-beat and multi-Shot action economy defined in `craft.md`. A Shot with no meaningful stage change uses one direct local timecode line spanning its duration.
 
 Every exact time range requires a user-supplied or explicitly approved target duration. Keep ranges ordered and within that duration; do not invent seconds.
 
@@ -144,7 +144,7 @@ Use Sora's meaning: `<counts or beats>`. Use this top-level field only with the 
 
 ### Shot blocks
 
-For each Shot, include only useful visible controls: global time range, framing, frame-zero camera position or camera behavior already active at frame zero, spatial relationship, initial visible scene and subject state, one Shot-local `Action:` line, locked dialogue, visible text, and decisive sound trigger. Every setup sentence before the local `Action:` describes only facts or an already-active camera behavior true at that Shot's `0.0s`; every action, camera, or state change after frame zero belongs to the local `Action:`. Use the continuous local Action form when no meaningful stage change exists; use short local Action beats when order or timing matters. One Shot has one main story job, one primary action, and one dominant camera behavior unless the shot authority explicitly locks more.
+For each Shot, include only useful visible controls: global time range, framing, frame-zero camera position or camera behavior already active at frame zero, spatial relationship, initial visible scene and subject state, direct Shot-local timecode lines, locked dialogue, visible text, and decisive sound trigger. Every setup sentence before the local timeline describes only facts or an already-active camera behavior true at that Shot's `0.0s`; every action, camera, or state change after frame zero belongs to a direct local timecode line. Use one full-duration line when no meaningful stage change exists; use multiple lines when order or timing matters. One Shot has one main story job, one primary action, and one dominant camera behavior unless the shot authority explicitly locks more.
 
 For cleaning, restoration, organization, damage-removal, before/after, or product-efficacy work, every affected Shot must establish a renderable frame-zero condition before its first action: name the visible dirt, debris, damage, or disorder; quantify its amount or density in practical visual terms; describe its distribution pattern; and locate it on the relevant surface, edge, seam, groove, corner, container, or background zone. A display or storage Shot must instead state that its presentation surface is clean, empty, or orderly and identify the objects intentionally present. Do not use a bare adjective such as `脏乱` as the whole setup. When source or locked material controls the condition, preserve it; when the condition is open, choose the smallest visible setup that makes the intended effect readable without inventing a product claim.
 
@@ -182,10 +182,10 @@ Before adding a negative clause, verify that no Shot requires the physical or di
 - Preserve supplied shot authority; compile it into executable model language without redesigning it.
 - Treat a supplied input image as frame zero: place only already-visible composition, identity, product state, and set dressing in setup fields or Shot setup; let the execution carrier own what happens next.
 - Keep psychological reasoning internal; convert it into gaze, breath, posture, action, pause, voice, distance, contact, or refusal only when supported.
-- Keep each fact at one layer. Global fields own shared controls; a top-level Action/Timing carrier or each Shot's local Action owns execution; `Constraints` owns unique positive invariants and independent negative failure modes in one structure.
+- Keep each fact at one layer. Global fields own shared controls; a top-level Action/Timing carrier or each Shot's direct local timeline owns execution; `Constraints` owns unique positive invariants and independent negative failure modes in one structure.
 - Resolve every global-to-Shot and Shot-to-downstream contradiction before output. Prefer narrowing the overbroad field over weakening or redesigning authoritative Shot content.
 - Do not emit both a global execution summary and a detailed execution carrier.
-- Use ASCII square brackets for Shot headers and top-level Timing/beats, and parentheses for Shot-local beat ranges: `Shot 1 [0.0-5.0s]`, `Action: beat 1 (0-2s) ...; beat 2 (2-5s) ...`, `角色[压低声音]：「台词」`, `[Audio trigger: ...]`.
+- Use ASCII square brackets for Shot headers, such as `Shot 1 [0.0-5.0s]`. Format each Shot-local action as a standalone range with `s` immediately before the ASCII colon, such as `0.0-2.0s: ...`; use no `Action:`, `beat N`, brackets, parentheses, or bullets on those local lines. Keep performance directions and audio triggers in forms such as `角色[压低声音]：「台词」` and `[Audio trigger: ...]` only when relevant.
 - Return only the finished body, without notes or analysis.
 
 ## Adaptive skeletons
@@ -205,9 +205,9 @@ Audio: [Complete adaptive sound state: default no-BGM ambience/SFX, explicitly s
 [Only populated fields before execution, in canonical order.]
 Action: [Concise whole process.]
 Timing/beats:
-- [0.0-1.0s] [First meaningful stage.]
-- [1.0-3.2s] [Second meaningful stage.]
-- [3.2-4.0s] [Landing.]
+0.0-1.0s: [First meaningful stage.]
+1.0-3.2s: [Second meaningful stage.]
+3.2-4.0s: [Landing.]
 Audio: [Complete adaptive sound state: default no-BGM ambience/SFX, explicitly supplied music, or explicit absolute silence.]
 [Only populated Text, Dialogue, or Constraints fields, in canonical order.]
 ```
@@ -219,11 +219,12 @@ Audio: [Complete adaptive sound state: default no-BGM ambience/SFX, explicitly s
 
 **Shot 1 [0.0-4.0s]**
 [Only this Shot's useful setup, framing, camera, space, or initial-state controls.]
-Action: beat 1 (0-2s) [first sequential action]; beat 2 (2-4s) [second action and landing].
+0.0-2.0s: [First sequential action.]
+2.0-4.0s: [Second action and landing.]
 
 **Shot 2 [4.0-7.0s]**
 [Only this Shot's useful setup, framing, camera, space, or initial-state controls.]
-Action: [one continuous action and landing].
+0.0-3.0s: [One continuous action and landing.]
 
 Audio: [Shared adaptive sound state not already owned by a Shot trigger.]
 [Only populated Text, Dialogue, or Constraints fields, in canonical order.]
@@ -241,9 +242,9 @@ Camera: 固定俯斜微距近景，主体居中，全程无变焦、摇移或切
 Physics: 黏土只在手指实际接触并施压的位置变形，附加块逐步与后脑融合，不自行融化、增殖或瞬间变形。
 Action: 一只手全程只负责托稳半身像，另一只手是唯一塑形执行者，只处理后脑的附加黏土。
 Timing/beats:
-- [0.0-1.0s] 独立小块黏土被贴稳在后脑。
-- [1.0-3.2s] 指腹沿上缘和两侧接缝按压、推开并向下抹合。
-- [3.2-4.0s] 手指离开，完成状态稳定展示。
+0.0-1.0s: 独立小块黏土被贴稳在后脑。
+1.0-3.2s: 指腹沿上缘和两侧接缝按压、推开并向下抹合。
+3.2-4.0s: 手指离开，完成状态稳定展示。
 Audio: 无BGM。只有轻微室内底噪和指腹摩擦柔软黏土的近距离声音，无旁白。
 Constraints: 始终只有一个半身像和一块附加黏土；既有脸部、衣褶、肩膀和整体比例保持不变；避免多指或缺指、手指穿透黏土、手与雕像粘连、雕像重置或复制、新增工具、字幕、水印或任何文字。
 ```
@@ -257,8 +258,8 @@ The example intentionally has no `Use case`, because no concrete destination for
 - If `Use case` appears, does it answer where the finished clip will be used, without describing the prompt, workflow, evaluation process, director body, or action request?
 - Are empty fields, placeholders, filler, and redundant restatements absent?
 - Is the top-level execution carrier the smallest sufficient one: Action, Action plus Timing/beats, or Shots?
-- If Shots are used, are global Action, global Timing/beats, and an unlabeled execution summary absent, and does every Shot contain exactly one local `Action:` line?
-- If a Shot uses local beats, do they reset to `0.0s`, remain sequential and non-overlapping, use no more than one decimal when needed, and end at that Shot's duration without repeating global timestamps?
+- If Shots are used, are global Action, global Timing/beats, and an unlabeled execution summary absent, and does every Shot contain one or more direct local timecode lines with no `Action:`, `beat N`, parentheses, bullets, or brackets, and with `s` immediately before the ASCII colon?
+- Do direct Shot-local timecode lines reset to `0.0s`, remain sequential and non-overlapping, use no more than one decimal when needed, and end at that Shot's duration without repeating global timestamps?
 - If exact time ranges are used, do they fit the approved duration?
 - For cleaning, restoration, organization, damage-removal, before/after, or product-efficacy work, does every affected Shot establish the frame-zero condition with visible type, amount or density, distribution, and location; and does every display or storage Shot establish its clean or ordered baseline?
 - Does every global field hold for every Shot it claims to cover, with valid local differences expressed as specializations rather than contradictions?
