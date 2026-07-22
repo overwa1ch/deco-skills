@@ -285,6 +285,22 @@ class SkillContractTests(unittest.TestCase):
         self.assertIn(expected, skill)
         for label in ("[通过]", "[修改]", "[自检]", "[通过并锁定]"):
             self.assertIn(label, skill)
+        canonical = re.search(
+            r"## Workflow\n\n((?:[1-8]\. .+\n){8})", skill
+        )
+        self.assertIsNotNone(canonical)
+        canonical_names = [
+            line.split(". ", 1)[1]
+            for line in canonical.group(1).strip().splitlines()
+        ]
+        short = self.read("deco-screenplay-writer/references/format-short.md")
+        short_names = re.findall(
+            r"(?m)^### 第[一二三四五六七八]步：(.+)$", short
+        )
+        short_names = [
+            re.sub(r"（短片精简版）$", "", name) for name in short_names
+        ]
+        self.assertEqual(short_names, canonical_names)
         references = "\n".join(
             path.read_text(encoding="utf-8")
             for path in sorted((REPO / "deco-screenplay-writer/references").glob("*.md"))
